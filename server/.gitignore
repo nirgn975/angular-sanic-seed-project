@@ -1,2 +1,6 @@
-# Local settings.
+*.log
+*.pot
+*.pyc
 static/
+__pycache__/
+local_settings.py
