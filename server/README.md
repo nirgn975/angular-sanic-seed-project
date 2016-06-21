@@ -1,5 +1,5 @@
 ## Back-End
-The back end (server) part of the open pension project written in [Django 1.9.x](https://www.djangoproject.com/).
+The back end (server) part of the <YOUR-PROJECT-NAME> project written in [Django 1.9.x](https://www.djangoproject.com/).
 
 ## Manual Installation
 
@@ -12,4 +12,5 @@ The back end (server) part of the open pension project written in [Django 1.9.x]
 7. Open the browser at [http://localhost:8000](http://localhost:8000).
 
 ## Tests
-Nothing yet.
+
+Run `python manage.py test`.
