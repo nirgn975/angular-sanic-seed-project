@@ -1,4 +1,4 @@
-[![Build Status]()
+[![Build Status](https://travis-ci.org/nirgn975/Angular2-Django-cluster.svg?branch=master)](https://travis-ci.org/nirgn975/Angular2-Django-cluster)
 
 # Angular 2.x - Django Cluster
 The repo contains a `server` directory that contains an hello world app in [Django](https://www.djangoproject.com/), and a `client` directory which contains an [Angular (version 2.x)](https://angular.io/) hello world app (that has build with [Angular-CLI](https://github.com/angular/angular-cli) tool).
