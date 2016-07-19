@@ -20,6 +20,7 @@ If you want to install the project manually, go to the `/client` or `/server` di
 * [Angular 2.x](https://angular.io/)
 * [Django 1.9.x](https://www.djangoproject.com/)
 * [PostgreSQL](http://www.postgresql.org/)
+* [Nginx](https://www.nginx.com/resources/wiki/)
 
 ## Contribute
 Just fork and do a pull request (;
