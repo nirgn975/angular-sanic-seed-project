@@ -1,9 +1,9 @@
 ## Back-End
-The back end (server) part of the <YOUR-PROJECT-NAME> project written in [Django 1.9.x](https://www.djangoproject.com/).
+The back end (server) part of the _YOUR-PROJECT-NAME_ project written in [Django 1.10.1](https://www.djangoproject.com/).
 
 ## Manual Installation
 
-1. Make sure you have Python 3.x and pip installed.
+1. Make sure you have Python 3.5 and pip installed.
 2. `cd server/config` then `cp local_settings.template local_settings.py` and modify it by your local settings.
 3. Install requirements with `pip install -r requirements.txt` (located under `server` directory).
 4. Migrate the data with `python manage.py migrate`.
