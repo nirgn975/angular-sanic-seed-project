@@ -1,10 +1,10 @@
-import { HelloWorldPage } from './app.po';
+import { HwPage } from './app.po';
 
-describe('hello-world App', function() {
-  let page: HelloWorldPage;
+describe('hw App', function() {
+  let page: HwPage;
 
   beforeEach(() => {
-    page = new HelloWorldPage();
+    page = new HwPage();
   });
 
   it('should display message saying app works', () => {

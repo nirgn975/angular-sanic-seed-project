@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor/globals';
 
-export class HelloWorldPage {
+export class HwPage {
   navigateTo() {
     return browser.get('/');
   }
