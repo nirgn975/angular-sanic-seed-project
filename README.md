@@ -1,4 +1,4 @@
-# Angular 2.x - Django Cluster
+# Angular 2 - Django Cluster
 
 [![license][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 
@@ -30,6 +30,7 @@ If you want to install the project manually, go to the `/client` or `/server` di
 
 * [Angular-CLI](https://cli.angular.io/)
 * [ngrx](https://github.com/ngrx)
+* [Docker](https://www.docker.com/)
 
 ## Contribute
 
