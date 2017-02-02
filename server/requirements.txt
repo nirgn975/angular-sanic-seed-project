@@ -1,14 +1,17 @@
 # Install with: `pip install -r requirements.txt`
 
-Django==1.10.1
-psycopg2==2.6.1
-gunicorn==19.3.0
-django-extensions==1.6.6
+Django==1.10.5
+psycopg2==2.6.2
+django-extensions==1.7.6
+gunicorn==19.6.0
+
+# Security
+django-admin-honeypot==1.0.0
 
 # Rest Framework
-djangorestframework==3.3.3
-Markdown==2.6.6
-django-filter==0.13.0
+djangorestframework==3.5.3
+Markdown==2.6.8
+django-filter==1.0.1
 
 # CORS
-django-cors-headers==1.1.0
+django-cors-headers==2.0.1

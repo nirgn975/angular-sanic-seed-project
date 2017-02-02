@@ -1,15 +1,16 @@
-from django.test import TestCase
+from rest_framework import status
+from rest_framework.test import APITestCase
+from django.contrib.auth.models import User
 
 
-class TestPensionApi(TestCase):
+class UsersApiTestCase(APITestCase):
+    def setUp(self):
+        User.objects.create_superuser('admin', 'admin@example.com', 'admin12345')
 
-    def test_api_root(self):
-        """
-        Test the url of the api root.
-        """
-        response = self.client.get('/api/')
-        self.assertEqual(response.status_code, 200)
-
-        # When trailing slash is missing it should add it after redirection.
-        response = self.client.get('/api')
-        self.assertEqual(response.status_code, 301)
+    def test_get_users_objects(self):
+        response = self.client.get('/api/users/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]['email'], 'admin@example.com')
+        self.assertEqual(response.data[0]['username'], 'admin')
+        self.assertEqual(response.data[0]['url'], 'http://testserver/api/users/1/')
