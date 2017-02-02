@@ -29,18 +29,19 @@ install:
   - cd client && npm install
 
   # Server
-  - pip install coverage
+  - cd ../server && pip install coverage
 
 script:
   # Client
-  - npm run lint
+  - cd ../client && npm run lint
   - npm run test
   - ng build --prod --aot
   - cd dist && ws --port 4200&
   - npm run e2e
 
   # Server
-  - cd ../server && coverage run --source='.' manage.py test config
+  - cd ../server
+  - coverage run --source='.' manage.py test config
 
 after_script:
   - cd .. && codecov
