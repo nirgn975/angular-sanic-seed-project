@@ -30,6 +30,7 @@ install:
 
   # Server
   - cd ../server && pip install coverage
+  - pip install -r requirements.txt
 
 script:
   # Client
@@ -40,8 +41,7 @@ script:
   - npm run e2e
 
   # Server
-  - cd ../server
-  - coverage run --source='.' manage.py test config
+  - cd ../server && coverage run --source='.' manage.py test config
 
 after_script:
   - cd .. && codecov
