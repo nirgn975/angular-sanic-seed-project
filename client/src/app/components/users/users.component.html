@@ -1,0 +1,14 @@
+<md-card class="example-card" *ngFor="let user of user$ | async">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{user.username}}</md-card-title>
+    <md-card-subtitle>{{user.email}}</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image src="assets/person-icon.png">
+  <md-card-content>
+    <p>{{user.url}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>

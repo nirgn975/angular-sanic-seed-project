@@ -31,6 +31,7 @@ parsers:
   javascript:
     enable_partials: false
 ignore:
+  - "client/src/app/util.ts"
   - "server/manage.py"
   - "server/config"
   - "server/**/apps.py"
