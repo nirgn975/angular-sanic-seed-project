@@ -20,7 +20,11 @@ coverage:
     patch:
       default:
         enabled: yes
+<<<<<<< HEAD
         target: 50%
+=======
+        target: 80%
+>>>>>>> b72a69f (Update dependencies (#20))
 parsers:
   gcov:
     branch_detection:
@@ -33,5 +37,8 @@ parsers:
 ignore:
   - "server/manage.py"
   - "server/config"
+<<<<<<< HEAD
   - "server/locustfile"
+=======
+>>>>>>> b72a69f (Update dependencies (#20))
   - "server/**/apps.py"
