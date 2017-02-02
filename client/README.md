@@ -7,7 +7,7 @@ The front end (client) side of the project written in Angular, with Angular-CLI,
 * Install [Angular-cli](https://github.com/angular/angular-cli)
 * Install [npm](https://nodejs.org/en/)
 
-## Installation
+## Manual Installation
 
 1. Run `npm install` to install dependencies
 2. Run `npm start` to fire up the dev server
@@ -16,10 +16,10 @@ The front end (client) side of the project written in Angular, with Angular-CLI,
 ## Tests
 
 * Run `npm run lint` to check for TSLint mistakes
-* Run `npm test` to execute the unit tests via Karma.
-* Run `npm run e2e` to execute the end-to-end tests via Protractor.
+* Run `npm test` to execute the unit tests via Karma
+* Run `npm run e2e` to execute the end-to-end tests via Protractor
 
 ## Deploy
 
-1. Run `ng build -prod -aot` to build the project.
-2. Run `npm run sw` to generate the service worker file (in dist directory).
+1. Run `ng build -prod -aot` to build the project
+2. Run `npm run sw` to generate the service worker file (in dist directory)

@@ -26,6 +26,7 @@ before_install:
 
 install:
   - cd client && npm install
+  - pip install --user codecov
 
 script:
   # Client
