@@ -25,8 +25,11 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
+  # Client
   - cd client && npm install
-  - pip install --user codecov
+
+  # Server
+  - pip install coverage
 
 script:
   # Client
@@ -36,5 +39,8 @@ script:
   - cd dist && ws --port 4200&
   - npm run e2e
 
+  # Server
+  - cd ../server coverage run --source='.' manage.py test config
+
 after_script:
-  - codecov
+  - cd .. && codecov
