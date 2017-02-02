@@ -1,31 +1,25 @@
 # Client
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+The front end (client) side of the project written in Angular, with Angular-CLI, ngrx, and material2.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+* Install [Angular-cli](https://github.com/angular/angular-cli)
+* Install [npm](https://nodejs.org/en/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Installation
 
-## Build
+1. Run `npm install` to install dependencies
+2. Run `npm start` to fire up the dev server
+3. Open browser to [http://localhost:4200](http://localhost:4200)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Tests
 
-## Running unit tests
+* Run `npm run lint` to check for TSLint mistakes
+* Run `npm test` to execute the unit tests via Karma.
+* Run `npm run e2e` to execute the end-to-end tests via Protractor.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Deploy
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to GitHub Pages
-
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Run `ng build -prod -aot` to build the project.
+2. Run `npm run sw` to generate the service worker file (in dist directory).
