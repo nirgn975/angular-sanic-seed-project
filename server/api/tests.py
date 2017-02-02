@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from django.contrib.auth.models import User
 
+
 class UsersApiTestCase(APITestCase):
     def setUp(self):
         User.objects.create_superuser('admin', 'admin@example.com', 'admin12345')
