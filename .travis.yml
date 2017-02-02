@@ -13,6 +13,9 @@ node_js:
   - "6"
   - "7"
 
+services:
+  - postgresql
+
 cache:
   npm: true
   directories:
@@ -31,6 +34,7 @@ install:
   # Server
   - cd ../server && pip install coverage
   - pip install -r requirements.txt
+  - psql -c 'create database server;' -U postgres
 
 script:
   # Client
