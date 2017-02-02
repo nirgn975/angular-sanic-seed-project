@@ -46,8 +46,9 @@ script:
 
   # Server
   - cd ../server && coverage run --source='.' manage.py test config
-  - coverage xml
+#  - coverage xml
   - pycodestyle --show-source --max-line-length=119 --show-pep8 .
+  - python manage.py test
 
 after_script:
   - cd .. && codecov
