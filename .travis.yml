@@ -45,7 +45,8 @@ script:
   - npm run e2e
 
   # Server
-  - cd ../server && coverage run --source='.' manage.py test config html
+  - cd ../server && coverage run --source='.' manage.py test config
+  - coverage xml
 
 after_script:
   - cd .. && codecov
