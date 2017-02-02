@@ -33,3 +33,4 @@ parsers:
 ignore:
   - "server/manage.py"
   - "server/config"
+  - "server/**/apps.py"
