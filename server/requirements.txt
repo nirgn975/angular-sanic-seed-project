@@ -3,7 +3,7 @@
 Django==1.10.1
 psycopg2==2.6.1
 gunicorn==19.3.0
-django-extensions==1.6.6
+django-extensions==1.7.6
 
 # Rest Framework
 djangorestframework==3.3.3
