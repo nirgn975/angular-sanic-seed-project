@@ -1,19 +1,6 @@
 FROM node:latest
 MAINTAINER Nir Galon <nir@galon.io>
 
-#RUN apt-get update -y
-
-
-#Disable npm progress bar - for speed.
-#RUN npm set progress=false
-
-# Install Angular CLI tool.
-# RUN npm install -g angular-cli typings --silent
-
-# Install npm dependencies.
-#RUN npm install --silent
-
-
 RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV APP_NAME "client"
