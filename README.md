@@ -40,16 +40,16 @@ If you want to install the project manually, go to the `/client` or `/server` di
 Just fork and do a pull request (;
 
 [license-image]: https://img.shields.io/badge/license-ISC-blue.svg
-[license-url]: https://github.com/nirgn975/Angular2-Django-cluster/blob/master/LICENSE
-[travis-image]: https://travis-ci.org/nirgn975/Angular2-Django-cluster.svg?branch=master
-[travis-url]: https://travis-ci.org/nirgn975/Angular2-Django-cluster
-[codecov-image]: https://codecov.io/gh/nirgn975/Angular2-Django-cluster/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/nirgn975/Angular2-Django-cluster
-[python3-image]: https://pyup.io/repos/github/nirgn975/angular2-django-cluster/python-3-shield.svg
-[python3-url]: https://pyup.io/repos/github/nirgn975/angular2-django-cluster/
-[updates-image]: https://pyup.io/repos/github/nirgn975/angular2-django-cluster/shield.svg
-[updates-url]: https://pyup.io/repos/github/nirgn975/angular2-django-cluster/
-[dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular2-Django-cluster/badge
-[dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular2-Django-cluster
+[license-url]: https://github.com/nirgn975/Angular-Django-cluster/blob/master/LICENSE
+[travis-image]: https://travis-ci.org/nirgn975/Angular-Django-cluster.svg?branch=master
+[travis-url]: https://travis-ci.org/nirgn975/Angular-Django-cluster
+[codecov-image]: https://codecov.io/gh/nirgn975/Angular-Django-cluster/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/nirgn975/Angular-Django-cluster
+[python3-image]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/python-3-shield.svg
+[python3-url]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/
+[updates-image]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/shield.svg
+[updates-url]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/
+[dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster/badge
+[dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
