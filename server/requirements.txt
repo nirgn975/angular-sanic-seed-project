@@ -9,7 +9,7 @@ gunicorn==19.6.0
 django-admin-honeypot==1.0.0
 
 # Rest Framework
-djangorestframework==3.5.3
+djangorestframework==3.5.4
 Markdown==2.6.8
 django-filter==1.0.1
 
