@@ -1,4 +1,4 @@
-## server
+## Server
 
 The server (backend) side of the project written [Python](https://www.python.org/) using [Django 1.10.5](https://www.djangoproject.com/), [Django REST framework](http://www.django-rest-framework.org/).
 
