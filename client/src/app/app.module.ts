@@ -1,3 +1,5 @@
+import 'hammerjs';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +29,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
