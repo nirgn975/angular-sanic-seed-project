@@ -1,6 +1,6 @@
-# An opinionated Angular - Django cluster
+# An opinionated Angular - Django RESTful cluster
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Python 3][python3-image]][python3-url] [![Updates][updates-image]][updates-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
 
 The `server` directory contain a simple [Django](https://www.djangoproject.com/) app that expose an `api` of Django `users` with [Django REST framework](http://www.django-rest-framework.org/). The `client` directory contain an [Angular](https://angular.io/) simple app, built with [Angular-Cli](https://github.com/angular/angular-cli), [ngrx](https://github.com/ngrx) to handle state, [Angular Material](https://github.com/angular/material2) as a design library, have service worker, and ready to `AOT` compilation. The simple Angular app show the users from the Django api.
 
@@ -15,10 +15,10 @@ The repo is a production ready app, that uses `nginx` to serve static files (the
 
 Automatic installation of the project with docker, for development.
 
-1. Run `docker build -t client .` to build the Docker image.
+1. In `client` directory run `docker build -t client .` to build the Docker image.
 2. Run ```docker run -dit -v `pwd`:/usr/src -p 4200:4200 --name=client-con client``` to run a container from that image.
 3. Open the browser at [http://localhost:4200](http://localhost:4200) to see your Angular (client) app.
-4. Run `docker build -t server .` to build the Docker image.
+4. In `server` directory run `docker build -t server .` to build the Docker image.
 5. Run ```docker run -dit -v `pwd`:/usr/src -p 8000:8000 --name=server-con server``` to run a container from that image.
 6. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
 
@@ -26,8 +26,8 @@ If you want to install the project manually, go to the `/client` or `/server` di
 
 ## Our Stack
 
-* [Angular 2.3](https://angular.io/)
-* [Django 1.10.5](https://www.djangoproject.com/)
+* [Angular](https://angular.io/)
+* [Django](https://www.djangoproject.com/)
 * [PostgreSQL](http://www.postgresql.org/)
 * [Docker](https://www.docker.com/)
 
@@ -48,10 +48,6 @@ Just fork and do a pull request (;
 [travis-url]: https://travis-ci.org/nirgn975/Angular-Django-cluster
 [codecov-image]: https://codecov.io/gh/nirgn975/Angular-Django-cluster/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/nirgn975/Angular-Django-cluster
-[python3-image]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/python-3-shield.svg
-[python3-url]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/
-[updates-image]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/shield.svg
-[updates-url]: https://pyup.io/repos/github/nirgn975/angular-django-cluster/
 [dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster/badge
 [dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
