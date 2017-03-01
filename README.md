@@ -1,4 +1,4 @@
-# An opinionated Angular - Django cluster
+# An opinionated Angular - Django RESTful cluster
 
 [![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
 
@@ -15,16 +15,19 @@ The repo is a production ready app, that uses `nginx` to serve static files (the
 
 Automatic installation of the project with docker, for development.
 
-1. Run `$ docker-compose up` to build the docker images and run them.
-3. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
+1. In `client` directory run `docker build -t client .` to build the Docker image.
+2. Run ```docker run -dit -v `pwd`:/usr/src -p 4200:4200 --name=client-con client``` to run a container from that image.
 3. Open the browser at [http://localhost:4200](http://localhost:4200) to see your Angular (client) app.
+4. In `server` directory run `docker build -t server .` to build the Docker image.
+5. Run ```docker run -dit -v `pwd`:/usr/src -p 8000:8000 --name=server-con server``` to run a container from that image.
+6. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
 
 If you want to install the project manually, go to the `/client` or `/server` directories and read the `README` file.
 
 ## Our Stack
 
-* [Angular 2.3](https://angular.io/)
-* [Django 1.10.5](https://www.djangoproject.com/)
+* [Angular](https://angular.io/)
+* [Django](https://www.djangoproject.com/)
 * [PostgreSQL](http://www.postgresql.org/)
 * [Docker](https://www.docker.com/)
 
