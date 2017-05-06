@@ -6,4 +6,9 @@ describe('client App', () => {
   beforeEach(() => {
     page = new ClientPage();
   });
+
+  it('should display message saying app works', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('app works!');
+  });
 });

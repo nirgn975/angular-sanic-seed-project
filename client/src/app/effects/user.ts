@@ -15,8 +15,8 @@ export class UserEffects {
   ) { }
 
   @Effect()
-  loadTransaction$: Observable<Action>= this.actions$
-    .ofType(user.ActionTypes.LOAD_USER)
+  loadUser$: Observable<Action>= this.actions$
+    .ofType(user.LOAD_USER)
     .switchMap(() => this.userService.getUsers())
     .map(users => new user.LoadUserSuccessAction(users));
 

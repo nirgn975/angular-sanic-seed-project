@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { reducer } from './reducers';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import { UserService } from './services/user.service';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
+    BrowserAnimationsModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UserEffects),
