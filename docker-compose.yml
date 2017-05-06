@@ -1,0 +1,62 @@
+version: "3"
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - example_cluster
+
+  database:
+    container_name: database
+    restart: always
+    image: postgres
+    networks:
+      - example_cluster
+
+  client:
+    image: client
+    build: client/
+    ports:
+      - "5000:5000"
+    working_dir: /usr/src
+    volumes:
+      - ./client:/usr/src
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        window: 120s
+    networks:
+      - example_cluster
+
+  server:
+    image: server
+    build: server/
+    ports:
+      - "5000:5000"
+    working_dir: /usr/src
+    volumes:
+      - ./server:/usr/src
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        window: 120s
+    depends_on:
+      - database
+    networks:
+      - example_cluster
+
+networks:
+  example_cluster:
