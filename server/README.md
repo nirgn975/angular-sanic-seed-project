@@ -1,6 +1,6 @@
 ## Server
 
-The server (backend) side of the project written [Python](https://www.python.org/) using [Django 1.10.5](https://www.djangoproject.com/), [Django REST framework](http://www.django-rest-framework.org/).
+The server (backend) side of the project written [Python](https://www.python.org/) using [Django 1.11](https://www.djangoproject.com/), [Django REST framework](http://www.django-rest-framework.org/).
 
 ## Prerequisites
 
@@ -17,9 +17,5 @@ The server (backend) side of the project written [Python](https://www.python.org
 
 ## Tests
 
-* Run `pycodestyle --show-source --max-line-length=119 --show-pep8 server;` to check for lint mistakes (by PEP8)
+* Run `pycodestyle --show-source --max-line-length=120 --show-pep8 server;` to check for lint mistakes (by PEP8)
 * Run `python manage.py test` to execute the unit tests
-
-## Deploy
-
-1. Not Yet
