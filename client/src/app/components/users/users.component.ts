@@ -12,7 +12,7 @@ import { User } from '../../models/user';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  private user$: Observable<User[]>;
+  public user$: Observable<User[]>;
 
   constructor(
     private store: Store<fromRoot.State>,
