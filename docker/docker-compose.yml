@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+ elasticsearch:
+   image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+   volumes:
+     - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+   ports:
+     - "9200:9200"
+     - "9300:9300"
+   environment:
+     ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+   volumes:
+     - /var/log:/usr/share/elasticsearch/data
+   networks:
+     - elk
+
+ logstash:
+   image: docker.elastic.co/logstash/logstash:5.4.0
+   volumes:
+     - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+     - ./logstash:/usr/share/logstash/pipeline
+   ports:
+     - "5959:5959"
+   environment:
+     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+   networks:
+     - elk
+   depends_on:
+     - elasticsearch
+
+ kibana:
+   image: docker.elastic.co/kibana/kibana:5.4.0
+   volumes:
+     - ./kibana:/usr/share/kibana/config
+   ports:
+     - "5601:5601"
+   networks:
+     - elk
+   depends_on:
+     - elasticsearch
+
+networks:
+  elk:
+    driver: bridge
