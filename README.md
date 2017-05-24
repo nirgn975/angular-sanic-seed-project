@@ -36,6 +36,7 @@ If you want to install the project manually, go to the `/client` or `/server` di
   * [Angular Material](https://material.angular.io/)
   * [ngrx](https://github.com/ngrx)
   * [Django REST framework](http://www.django-rest-framework.org/)
+  * [django-admin-honeypot](http://django-admin-honeypot.readthedocs.io/en/latest/)
 
 ## Contribute
 

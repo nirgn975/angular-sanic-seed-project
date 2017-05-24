@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   proxy:
     image: dockercloud/haproxy
@@ -27,7 +28,7 @@ services:
     image: client
     build: client/
     ports:
-      - "5000:5000"
+      - "4200:4200"
     working_dir: /usr/src
     volumes:
       - ./client:/usr/src
@@ -47,7 +48,7 @@ services:
     image: server
     build: server/
     ports:
-      - "5000:5000"
+      - "8000:8000"
     working_dir: /usr/src
     volumes:
       - ./server:/usr/src
