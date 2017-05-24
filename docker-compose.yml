@@ -1,13 +1,20 @@
 version: "3"
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - "80:80"
+  proxy:
+    image: dockercloud/haproxy
+    depends_on:
+      - scraper-node
+    environment:
+      - BALANCE=leastconn
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
     networks:
       - example_cluster
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
   database:
     container_name: database
@@ -58,5 +65,18 @@ services:
     networks:
       - example_cluster
 
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - example_cluster
+
 networks:
   example_cluster:
+    driver: overlay
