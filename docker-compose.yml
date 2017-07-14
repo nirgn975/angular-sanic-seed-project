@@ -3,8 +3,6 @@ version: "3"
 services:
   proxy:
     image: dockercloud/haproxy
-    depends_on:
-      - scraper-node
     environment:
       - BALANCE=leastconn
     volumes:
@@ -26,9 +24,10 @@ services:
 
   client:
     image: client
-    build: client/
     ports:
       - "4200:4200"
+    environment:
+      - SERVICE_PORTS=4200
     working_dir: /usr/src
     volumes:
       - ./client:/usr/src
@@ -46,7 +45,6 @@ services:
 
   server:
     image: server
-    build: server/
     ports:
       - "8000:8000"
     working_dir: /usr/src

@@ -6,23 +6,25 @@ The `server` directory contain a simple [Django](https://www.djangoproject.com/)
 
 The repo is a production ready app, that uses `nginx` to serve static files (the client app and static files from the server), and `gunicorn` for the server (python) stuff. All the parts are in a separate [Docker](https://www.docker.com/) containers and we use [Docker Swarm](https://docs.docker.com/engine/swarm/) to manage them.
 
+We use [ELK Stack](https://www.elastic.co/products) for logging. The `server` and the `client` logs sent to logstash, and saved in elasticsearch. There is also a kibana instance to check and analyze all the logs.
+
 ## Pre Requirements
 
 1. install [docker](https://www.docker.com/).
-2. Don't know yet.
 
 ## Installation
 
 Automatic installation of the project with docker, for development.
 
 1. In `client` directory run `docker build -t client .` to build the Docker image.
-2. Run ```docker run -dit -v `pwd`:/usr/src -p 4200:4200 --name=client-con client``` to run a container from that image.
-3. Open the browser at [http://localhost:4200](http://localhost:4200) to see your Angular (client) app.
-4. In `server` directory run `docker build -t server .` to build the Docker image.
-5. Run ```docker run -dit -v `pwd`:/usr/src -p 8000:8000 --name=server-con server``` to run a container from that image.
+2. In `server` directory run `docker build -t server .` to build the Docker image.
+3. To create a swarm `docker swarm init`.
+4. Run `docker stack deploy --compose-file=docker-compose.yml prod`
+5. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
 6. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
+7. Open the browser at [http://localhost:5601](http://localhost:5601) to see Kibana and check your logs.
 
-If you want to install the project manually, go to the `/client` or `/server` directories and read the `README` file.
+**If you want to install the project manually, go to the `/client` or `/server` directories and read the `README` file.**
 
 ## Our Stack
 
@@ -37,6 +39,34 @@ If you want to install the project manually, go to the `/client` or `/server` di
   * [ngrx](https://github.com/ngrx)
   * [Django REST framework](http://www.django-rest-framework.org/)
   * [django-admin-honeypot](http://django-admin-honeypot.readthedocs.io/en/latest/)
+  * [ELK Stack](https://www.elastic.co/products)
+  * [Docker Swarm](https://docs.docker.com/engine/swarm/)
+
+## Tests
+
+There is already tests for the `server` and the `client`, we currently at **+90** percent coverage.
+
+We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/stress_tests/`. To do a load test just install locust and write
+
+```
+locust --host=http://localhost
+```
+
+Then open up Locust’s web interface [http://localhost:8089](http://localhost:8089).
+
+## Rolling Updates
+
+To update the any of the containers that are in a service with a new image just create a new image, for example
+
+```
+docker build -t server:v2 .
+```
+
+And then update the service with the new image
+
+```
+docker service update --image server:v2 prod_server
+```
 
 ## Contribute
 
