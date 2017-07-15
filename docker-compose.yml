@@ -5,6 +5,7 @@ services:
     image: dockercloud/haproxy
     environment:
       - BALANCE=leastconn
+      - EXTRA_GLOBAL_SETTINGS=debug
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
@@ -16,9 +17,17 @@ services:
         constraints: [node.role == manager]
 
   database:
-    container_name: database
-    restart: always
     image: postgres
+    environment:
+      - POSTGRES_USER=nirgalon
+      - POSTGRES_PASSWORD=Zaq1234
+      - POSTGRES_DB=server
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        window: 60s
     networks:
       - example_cluster
 
@@ -28,11 +37,9 @@ services:
       - "4200:4200"
     environment:
       - SERVICE_PORTS=4200
-    working_dir: /usr/src
-    volumes:
-      - ./client:/usr/src
+    working_dir: /usr/src/app/
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 2
         delay: 10s
@@ -48,6 +55,12 @@ services:
     ports:
       - "8000:8000"
     working_dir: /usr/src
+    environment:
+      - DB_HOST=database
+      - DB_NAME=server
+      - DB_USER=nirgalon
+      - DB_PASS=Zaq1234
+    command: bash -c "/home/app/server/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
     volumes:
       - ./server:/usr/src
     deploy:
@@ -64,17 +77,75 @@ services:
     networks:
       - example_cluster
 
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - example_cluster
+  # visualizer:
+  #   image: dockersamples/visualizer:stable
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - "/var/run/docker.sock:/var/run/docker.sock"
+  #   deploy:
+  #     placement:
+  #       constraints: [node.role == manager]
+  #   networks:
+  #     - example_cluster
+  #
+  # elasticsearch:
+  #   image: elasticsearch:5.4.3
+  #   command: elasticsearch
+  #   environment:
+  #     ES_JAVA_OPTS: -Xms1g -Xmx1g
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   ulimits:
+  #     memlock: -1
+  #     nofile:
+  #       hard: 65536
+  #       soft: 65536
+  #     nproc: 65538
+  #   volumes:
+  #     - esdata:/usr/share/elasticsearch/data:rw
+  #   networks:
+  #     - example_cluster
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 1
+  #   healthcheck:
+  #     test: curl -s http://localhost:9200/_cluster/health | egrep 'yellow|green'
+  #     interval: 30s
+  #     retries: 1
+  #
+  # kibana:
+  #   image: kibana:5.4.3
+  #   ports:
+  #     - "5601:5601"
+  #   environment:
+  #     ELASTICSEARCH_URL: http://elasticsearch:9200
+  #   networks:
+  #     - example_cluster
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 1
+  #   healthcheck:
+  #     test: wget -qO- http://localhost:5601 > /dev/null
+  #     interval: 30s
+  #     retries: 1
+  #
+  # logstash:
+  #   image: logstash:5.4.3
+  #   command: sh -c "logstash -e 'input { tcp  { port => 5959 codec => json } } output { stdout { codec => rubydebug } elasticsearch { hosts => [ \"elasticsearch\" ] } }'"
+  #   ports:
+  #     - "5959:5959/tcp"
+  #     - "12201:12201/udp"
+  #   networks:
+  #     - example_cluster
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 1
+
+volumes:
+  esdata:
+    driver: local
 
 networks:
   example_cluster:
