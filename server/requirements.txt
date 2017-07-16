@@ -1,6 +1,6 @@
 # Install with: `pip install -r requirements.txt`
 
-Django==1.11.1
+Django==1.11.3
 psycopg2==2.7.1
 django-extensions==1.7.9
 gunicorn==19.7.1

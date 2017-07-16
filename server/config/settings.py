@@ -32,7 +32,6 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000'
 )
 
-
 # Application definition
 INSTALLED_APPS = [
     'api',
