@@ -37,7 +37,6 @@ services:
       - "4200:4200"
     environment:
       - SERVICE_PORTS=4200
-    working_dir: /usr/src/app/
     deploy:
       replicas: 1
       update_config:
@@ -54,15 +53,12 @@ services:
     image: server
     ports:
       - "8000:8000"
-    working_dir: /usr/src
     environment:
       - DB_HOST=database
       - DB_NAME=server
       - DB_USER=nirgalon
       - DB_PASS=Zaq1234
     command: bash -c "/home/app/server/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
-    volumes:
-      - ./server:/usr/src
     deploy:
       replicas: 2
       update_config:
