@@ -1,6 +1,6 @@
 # Install with: `pip install -r requirements.txt`
 
-Django==1.11
+Django==1.11.3
 psycopg2==2.7.1
 django-extensions==1.7.9
 gunicorn==19.7.1
@@ -9,7 +9,7 @@ gunicorn==19.7.1
 django-admin-honeypot==1.0.0
 
 # Rest Framework
-djangorestframework==3.6.2
+djangorestframework==3.6.3
 Markdown==2.6.8
 django-filter==1.0.2
 
