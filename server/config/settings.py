@@ -115,25 +115,27 @@ AUTH_PASSWORD_VALIDATORS = [
 # Logging
 # https://github.com/vklochan/python-logstash
 LOGGING = {
-  'handlers': {
-      'logstash': {
-          'level': 'DEBUG',
-          'class': 'logstash.LogstashHandler',
-          'host': 'localhost',
-          'port': 5959,
-          'version': 1,
-          'message_type': 'logstash',
-          'fqdn': False,
-          'tags': ['tag1', 'tag2'],
-      },
-  },
-  'loggers': {
-      'django.request': {
-          'handlers': ['logstash'],
-          'level': 'DEBUG',
-          'propagate': True,
-      },
-  },
+    'version': 1,
+    'disable_existing_loggers': True,
+    'handlers': {
+        'logstash': {
+            'level': 'DEBUG',
+            'class': 'logstash.LogstashHandler',
+            'host': 'localhost',
+            'port': 5959,
+            'version': 1,
+            'message_type': 'logstash',
+            'fqdn': False,
+            'tags': ['tag1', 'tag2'],
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['logstash'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }
 
 
