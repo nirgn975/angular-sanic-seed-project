@@ -33,4 +33,5 @@ parsers:
 ignore:
   - "server/manage.py"
   - "server/config"
+  - "server/locustfile"
   - "server/**/apps.py"
