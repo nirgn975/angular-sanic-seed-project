@@ -12,9 +12,6 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
-    client:{
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
     files: [{
       pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
       included: true,
@@ -23,11 +20,8 @@ module.exports = function (config) {
       pattern: './src/test.ts',
       watched: false
     }],
-    preprocessors: {
-      './src/test.ts': ['@angular/cli']
-    },
-    mime: {
-      'text/x-typescript': ['ts','tsx']
+    client:{
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
       reports: [ 'html', 'lcovonly' ],
@@ -36,9 +30,7 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'coverage-istanbul']
-              : ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
