@@ -13,6 +13,7 @@ class UserBehavior(TaskSet):
     def users(self):
         self.client.get('/api/users')
 
+
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
     min_wait = 5000

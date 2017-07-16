@@ -5,6 +5,9 @@ psycopg2==2.7.1
 django-extensions==1.8.1
 gunicorn==19.7.1
 
+# Admin
+django-flat-responsive==1.4.1
+
 # Security
 django-admin-honeypot==1.0.0
 
