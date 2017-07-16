@@ -15,3 +15,6 @@ django-filter==1.0.2
 
 # CORS
 django-cors-headers==2.0.2
+
+# Logging
+python-logstash==0.4.6
