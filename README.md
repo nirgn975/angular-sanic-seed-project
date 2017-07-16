@@ -46,7 +46,7 @@ Automatic installation of the project with docker, for development.
 
 There is already tests for the `server` and the `client`, we currently at **+90** percent coverage.
 
-We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/stress_tests/`. To do a load test just install locust and write
+We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/stress_tests/`. To do a load test just install locust (it's in the `requirements.txt` file) go to `server` directory and
 
 ```
 locust --host=http://localhost

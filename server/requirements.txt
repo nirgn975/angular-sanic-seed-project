@@ -18,3 +18,6 @@ django-cors-headers==2.1.0
 
 # Logging
 python-logstash==0.4.6
+
+# Testing
+locustio==0.8a2
