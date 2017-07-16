@@ -17,5 +17,5 @@ RUN chown -R $APP_USER:$APP_USER $HOME/*
 USER $APP_USER
 WORKDIR $APP_DIR
 
+RUN chmod +x /home/app/server/entrypoint.sh
 EXPOSE 8000
-CMD ["gunicorn", "config.wsgi", "-b", "0.0.0.0:8000"]

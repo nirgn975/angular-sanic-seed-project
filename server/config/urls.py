@@ -22,8 +22,4 @@ urlpatterns = [
     url(r'^api/', include('api.urls')),
     url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     url(r'^secret-admin/', admin.site.urls),
-]
-
-# Serve static uploaded files if in debug mode.
-# if settings.DEBUG:
-#     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
