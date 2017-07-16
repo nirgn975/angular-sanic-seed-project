@@ -56,7 +56,7 @@ Then open up Locust’s web interface [http://localhost:8089](http://localhost:8
 
 ## Rolling Updates
 
-To update the any of the containers that are in a service with a new image just create a new image, for example
+To update any of the containers that are in a service with a new image just create a new image, for example
 
 ```
 docker build -t server:v2 .
