@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { MaterialModule } from '@angular/material';
 import { reducer } from '../../reducers';
 import { StoreModule } from '@ngrx/store';
+import 'rxjs/add/observable/of';
 
 import { UsersComponent } from './users.component';
 
