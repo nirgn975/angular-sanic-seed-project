@@ -54,10 +54,12 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - DEBUG=False
       - DB_HOST=database
       - DB_NAME=server
       - DB_USER=nirgalon
       - DB_PASS=Zaq1234
+      - SECRET_KEY=-#&29$$6a5n)za$$%q-9di^$$lxu5bvo!so=0e$$anel3o7^3oscz6
     command: bash -c "/home/app/server/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
     deploy:
       replicas: 2
