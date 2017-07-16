@@ -114,27 +114,27 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Logging
 # https://github.com/vklochan/python-logstash#using-with-django
-LOGGING = {
-  'handlers': {
-      'logstash': {
-          'level': 'DEBUG',
-          'class': 'logstash.LogstashHandler',
-          'host': 'localhost',
-          'port': 5959,
-          'version': 1,
-          'message_type': 'logstash',
-          'fqdn': False,
-          'tags': ['tag1', 'tag2'],
-      },
-  },
-  'loggers': {
-      'django.request': {
-          'handlers': ['logstash'],
-          'level': 'DEBUG',
-          'propagate': True,
-      },
-  },
-}
+# LOGGING = {
+#   'handlers': {
+#       'logstash': {
+#           'level': 'DEBUG',
+#           'class': 'logstash.LogstashHandler',
+#           'host': 'localhost',
+#           'port': 5959,
+#           'version': 1,
+#           'message_type': 'logstash',
+#           'fqdn': False,
+#           'tags': ['tag1', 'tag2'],
+#       },
+#   },
+#   'loggers': {
+#       'django.request': {
+#           'handlers': ['logstash'],
+#           'level': 'DEBUG',
+#           'propagate': True,
+#       },
+#   },
+# }
 
 
 # Internationalization
