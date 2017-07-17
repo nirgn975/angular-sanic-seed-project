@@ -42,6 +42,12 @@ Automatic installation of the project with docker, for development.
   * [ELK Stack](https://www.elastic.co/products)
   * [Docker Swarm](https://docs.docker.com/engine/swarm/)
 
+## Django Admin
+
+  * When install the project with docker, there is an `entrypoint.sh` script that runs in the `server` container. It'll migrate the database and create a new super user with a username `admin` and a password `pass`.
+  * We use [django-admin-honeypot](https://github.com/dmpayton/django-admin-honeypot) to fake the default Django admin login screen to log and notify admins of attempted unauthorized access. So the real Django admin login screen will be under `/secret-admin`.
+  * We also use [django-flat-responsive](https://github.com/elky/django-flat-responsive) to make the Django admin screens responsive to mobile.
+
 ## Tests
 
 There is already tests for the `server` and the `client`, we currently at **+90** percent coverage.
