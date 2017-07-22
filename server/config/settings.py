@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', True)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:4200',
@@ -135,6 +135,13 @@ LOGGING = {
             'propagate': True,
         },
     },
+}
+
+# REST API
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 
