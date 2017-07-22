@@ -2,16 +2,10 @@ from locust import HttpLocust, TaskSet, task
 
 
 class UserBehavior(TaskSet):
-    # def on_start(self):
-    #     """ on_start is called when a Locust start before any task is scheduled """
-    #     self.login()
-
-    # def login(self):
-    #     self.client.post("/login", {"username":"ellen_key", "password":"education"})
-
     @task(1)
     def users(self):
-        self.client.get('/api/users')
+        self.client.login(username='admin', password='pass')
+        self.client.get('/api/users', serlf.headers)
 
 
 class WebsiteUser(HttpLocust):
