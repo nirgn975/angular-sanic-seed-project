@@ -15,7 +15,7 @@ class UsersApiTestCase(APITestCase):
         self.assertEqual(len(response.data), 1)
         self.assertEqual(response.data[0]['email'], 'admin@example.com')
         self.assertEqual(response.data[0]['username'], 'admin')
-        self.assertEqual(response.data[0]['url'], 'http://testserver/api/users/1/')
+        self.assertEqual(response.data[0]['url'], 'http://testserver/api/users/2/')
 
     def test_forbidden_get_users_objects(self):
         response = self.client.get('/api/users/', format='json')
