@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
@@ -12,8 +12,16 @@ export class UserService {
     private http: Http,
   ) { }
 
+  private appendToken(): RequestOptions {
+    const headers = new Headers();
+    headers.append('Authorization', `Basic ${btoa('admin:pass')}`);
+    return new RequestOptions({ headers: headers });
+  }
+
   getUsers(): Observable<User[]> {
-    return this.http.get(`${environment.server}/api/users`)
+    const options = this.appendToken();
+
+    return this.http.get(`${environment.server}/api/users`, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
