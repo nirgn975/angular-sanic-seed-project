@@ -74,6 +74,16 @@ And then update the service with the new image
 docker service update --image server:v2 prod_server
 ```
 
+## Database Backups
+
+Each day a backup of the PostgreSQL database will be created. The daily backups are rotated weekly, so maximum 7 backup files will be at the daily directory at once.
+
+Each Saturday morning a weekly backup will be created at the weekly directory. The weekly backups are rotated on a 5 week cycle.
+
+Each month at the 1st of the month a monthly backup will be created at the monthly directory. Monthly backups are **NOT** rotated
+
+The backups are saved at `/var/backups/postgres` at the host machine via a shared volume. It can be configured in the `docker-compose.yml` at `volumes` section of the `database` service.
+
 ## Contribute
 
 Just fork and do a pull request (;
