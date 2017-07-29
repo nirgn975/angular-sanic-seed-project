@@ -1,6 +1,6 @@
 # An Angular - Django Project Seed
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![buy me a cup of coffee!][donate-image]][donate-url]
 
 This repo is a production ready seed project. The app shows a list of users.
 
