@@ -1,10 +1,10 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.contrib.auth.models import User
-from requests.auth import HTTPBasicAuth
 
 
 class UsersApiTestCase(APITestCase):
+    @classmethod
     def setUp(self):
         User.objects.create_superuser('admin', 'admin@example.com', 'admin12345')
 
