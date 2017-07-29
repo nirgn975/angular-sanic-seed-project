@@ -26,7 +26,6 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.4",
     "@ngrx/store": "^2.2.3",
-    "angular2-logger": "^0.6.0",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
     "reselect": "^3.0.1",
