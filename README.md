@@ -1,6 +1,6 @@
 # An Angular - Django Project Seed
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![GitHub release][github-image]][github-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Codacy Badge][codacy-image]][codacy-url] [![Maintenance][maintenance-image]][maintenance-url] [![Donate][donate-image]][donate-url]
 
 This repo is a production ready seed project. The app shows a list of users.
 
@@ -123,12 +123,18 @@ The backups are saved at `/var/backups/postgres` at the host machine via a share
 Just fork and do a pull request (;
 
 [license-image]: https://img.shields.io/badge/license-ISC-blue.svg
-[license-url]: https://github.com/nirgn975/Angular-Django-cluster/blob/master/LICENSE
-[travis-image]: https://travis-ci.org/nirgn975/Angular-Django-cluster.svg?branch=master
-[travis-url]: https://travis-ci.org/nirgn975/Angular-Django-cluster
-[codecov-image]: https://codecov.io/gh/nirgn975/Angular-Django-cluster/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/nirgn975/Angular-Django-cluster
-[dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster/badge
-[dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster
+[license-url]: https://github.com/nirgn975/Angular-Django-Project-Seed/blob/master/LICENSE
+[github-image]: https://img.shields.io/github/release/nirgn975/Angular-Django-Project-Seed.svg
+[github-url]: https://github.com/nirgn975/Angular-Django-Project-Seed/releases
+[travis-image]: https://travis-ci.org/nirgn975/Angular-Django-Project-Seed.svg?branch=master
+[travis-url]: https://travis-ci.org/nirgn975/Angular-Django-Project-Seed
+[codecov-image]: https://codecov.io/gh/nirgn975/Angular-Django-Project-Seed/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/nirgn975/Angular-Django-Project-Seed
+[dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular-Django-Project-Seed/badge
+[dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-Project-Seed
+[codacy-image]: https://api.codacy.com/project/badge/Grade/b276134fff7f47439a01fc6d85cf2ff9
+[codacy-url]: https://www.codacy.com/app/nirgn975/Angular-Django-Project-Seed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nirgn975/Angular-Django-Project-Seed&amp;utm_campaign=Badge_Grade
+[maintenance-image]: https://img.shields.io/maintenance/yes/2017.svg
+[maintenance-url]: https://github.com/nirgn975
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
