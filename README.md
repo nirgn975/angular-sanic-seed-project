@@ -1,12 +1,20 @@
-# An opinionated Angular - Django RESTful cluster
+# An Angular - Django Project Seed
 
 [![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
 
-The `server` directory contain a simple [Django](https://www.djangoproject.com/) app that expose an `api` of Django `users` with [Django REST framework](http://www.django-rest-framework.org/). The `client` directory contain an [Angular](https://angular.io/) simple app, built with [Angular-Cli](https://github.com/angular/angular-cli), [ngrx](https://github.com/ngrx) to handle state, [Angular Material](https://github.com/angular/material2) as a design library, have service worker, and ready to `AOT` compilation. The simple Angular app show the users from the Django api.
+This repo is a production ready seed project. The app shows a list of users.
 
-The repo is a production ready app, that uses `nginx` to serve static files (the client app and static files from the server), and `gunicorn` for the server (python) stuff. All the parts are in a separate [Docker](https://www.docker.com/) containers and we use [Docker Swarm](https://docs.docker.com/engine/swarm/) to manage them.
+## Structure
 
-We use [ELK Stack](https://www.elastic.co/products) for logging. The `server` and the `client` logs sent to logstash, and saved in elasticsearch. There is also a kibana instance to check and analyze all the logs.
+* The `client` service is a build of the `client` directory. It contain an [Angular](https://angular.io/) app, built with [Angular-Cli](https://github.com/angular/angular-cli), [ngrx](https://github.com/ngrx) to handle state, [Angular Material](https://github.com/angular/material2) as a design library, have service worker, and `AOT` compiled. The app shows the users from the Django api.
+* The `server` service is a build of the `server` directory. It contain a simple [Django](https://www.djangoproject.com/) app that expose an `api` of Django `users` with [Django REST framework](http://www.django-rest-framework.org/). The Python serve through a [gunicorn](http://gunicorn.org/) server installed in the container.
+* There is a `postgres` service for the Django database. The `database` directory contains the automatic backup script.
+* There is an `nginx` service to serve static files (the client app).
+* There is an `haproxy` service to get all the HTTP requests and do load balancing between the containers in the services.
+* There are a separate containers for the [ELK Stack](https://www.elastic.co/products) for logging. The `server` and the `client` logs sent to logstash, and saved in elasticsearch. There is also a kibana instance to check and analyze all the logs.
+* There is a `visualizer` container to visualize where is each container is located at (on which server).
+
+All the parts are in a separate [Docker](https://www.docker.com/) containers and we use [Docker Swarm](https://docs.docker.com/engine/swarm/) to manage them.
 
 ## Pre Requirements
 
@@ -19,10 +27,18 @@ Automatic installation of the project with docker, for development.
 1. In `client` directory run `docker build -t client .` to build the Docker image.
 2. In `server` directory run `docker build -t server .` to build the Docker image.
 3. To create a swarm `docker swarm init`.
-4. Run `docker stack deploy --compose-file=docker-compose.yml prod`
-5. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
-6. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
-7. Open the browser at [http://localhost:5601](http://localhost:5601) to see Kibana and check your logs.
+4. Download all docker images:
+    * `docker pull dockercloud/haproxy`  
+    * `docker pull postgres`  
+    * `docker pull dockersamples/visualizer:stable`  
+    * `docker pull elasticsearch:5.4.3`  
+    * `docker pull kibana:5.4.3`  
+    * `docker pull logstash:5.4.3`  
+5. Run `docker stack deploy --compose-file=docker-compose.yml prod`
+6. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
+7. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
+8. Open the browser at [http://localhost:8080](http://localhost:8080) to see the visualizer.
+9. Open the browser at [http://localhost:5601](http://localhost:5601) to see Kibana and check your logs.
 
 **If you want to install the project manually, go to the `/client` or `/server` directories and read the `README` file.**
 
@@ -52,7 +68,25 @@ Automatic installation of the project with docker, for development.
 
 There is already tests for the `server` and the `client`, we currently at **+90** percent coverage.
 
-We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/locustfile.py`. To do a load test just install locust (it's in the `requirements.txt` file) go to `server` directory and
+To run the `client` tests and lint run the commands below in the `client` directory.
+
+```
+npm run lint
+npm run test
+```
+
+To run the `server` tests and lint run the commands below in the `server` directory.
+
+```
+pycodestyle --show-source --max-line-length=120 --show-pep8 .;
+python manage.py test
+```
+
+## Load Tests
+
+We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/locustfile.py`.
+
+To do a load test just install locust (it's in the `requirements.txt` file) go to `server` directory and run
 
 ```
 locust --host=http://localhost
@@ -73,6 +107,16 @@ And then update the service with the new image
 ```
 docker service update --image server:v2 prod_server
 ```
+
+## Database Backups
+
+Each day a backup of the PostgreSQL database will be created. The daily backups are rotated weekly, so maximum 7 backup files will be at the daily directory at once.
+
+Each Saturday morning a weekly backup will be created at the weekly directory. The weekly backups are rotated on a 5 week cycle.
+
+Each month at the 1st of the month a monthly backup will be created at the monthly directory. Monthly backups are **NOT** rotated
+
+The backups are saved at `/var/backups/postgres` at the host machine via a shared volume. It can be configured in the `docker-compose.yml` at `volumes` section of the `database` service.
 
 ## Contribute
 
