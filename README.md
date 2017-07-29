@@ -124,8 +124,8 @@ Just fork and do a pull request (;
 
 [license-image]: https://img.shields.io/badge/license-ISC-blue.svg
 [license-url]: https://github.com/nirgn975/Angular-Django-cluster/blob/master/LICENSE
-[github-image]: https://img.shields.io/github/release/qubyte/rubidium.svg
-[github-url]: https://github.com/nirgn975/Angular-Django-Project-Seed
+[github-image]: https://img.shields.io/github/release/nirgn975/Angular-Django-Project-Seed.svg
+[github-url]: https://github.com/nirgn975/Angular-Django-Project-Seed/releases
 [travis-image]: https://travis-ci.org/nirgn975/Angular-Django-cluster.svg?branch=master
 [travis-url]: https://travis-ci.org/nirgn975/Angular-Django-cluster
 [codecov-image]: https://codecov.io/gh/nirgn975/Angular-Django-cluster/branch/master/graph/badge.svg
