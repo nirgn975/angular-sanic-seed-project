@@ -22,8 +22,9 @@ services:
       - POSTGRES_USER=nirgalon
       - POSTGRES_PASSWORD=Zaq1234
       - POSTGRES_DB=server
-    # volumes:
-    #   - postgresdata:/var/lib/postgresql/data:rw
+    volumes:
+      - ./database:/etc/cron.daily
+      - /var/backups:/var/backups
     deploy:
       replicas: 1
       restart_policy:
@@ -145,8 +146,6 @@ services:
 
 volumes:
   esdata:
-    driver: local
-  postgresdata:
     driver: local
 
 networks:
