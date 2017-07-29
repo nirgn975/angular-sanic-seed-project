@@ -52,7 +52,25 @@ Automatic installation of the project with docker, for development.
 
 There is already tests for the `server` and the `client`, we currently at **+90** percent coverage.
 
-We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/locustfile.py`. To do a load test just install locust (it's in the `requirements.txt` file) go to `server` directory and
+To run the `client` tests and lint run the commands below in the `client` directory.
+
+```
+npm run lint
+npm run test
+```
+
+To run the `server` tests and lint run the commands below in the `server` directory.
+
+```
+pycodestyle --show-source --max-line-length=120 --show-pep8 .;
+python manage.py test
+```
+
+## Load Tests
+
+We also write some tests for doing load test with [locust](http://locust.io/), you can find it under `server/locustfile.py`.
+
+To do a load test just install locust (it's in the `requirements.txt` file) go to `server` directory and run
 
 ```
 locust --host=http://localhost
