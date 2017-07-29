@@ -28,12 +28,12 @@ Automatic installation of the project with docker, for development.
 2. In `server` directory run `docker build -t server .` to build the Docker image.
 3. To create a swarm `docker swarm init`.
 4. Download all docker images:
-  * `docker pull dockercloud/haproxy`  
-  * `docker pull postgres`  
-  * `docker pull dockersamples/visualizer:stable`  
-  * `docker pull elasticsearch:5.4.3`  
-  * `docker pull kibana:5.4.3`  
-  * `docker pull logstash:5.4.3`  
+    * `docker pull dockercloud/haproxy`  
+    * `docker pull postgres`  
+    * `docker pull dockersamples/visualizer:stable`  
+    * `docker pull elasticsearch:5.4.3`  
+    * `docker pull kibana:5.4.3`  
+    * `docker pull logstash:5.4.3`  
 5. Run `docker stack deploy --compose-file=docker-compose.yml prod`
 6. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
 7. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
