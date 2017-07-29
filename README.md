@@ -1,6 +1,6 @@
 # An Angular - Django Project Seed
 
-[![license][license-image]][license-url] [![GitHub release][github-image]][github-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![GitHub release][github-image]][github-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Codacy Badge][codacy-image]][codacy-url] [![Donate][donate-image]][donate-url]
 
 This repo is a production ready seed project. The app shows a list of users.
 
@@ -132,5 +132,7 @@ Just fork and do a pull request (;
 [codecov-url]: https://codecov.io/gh/nirgn975/Angular-Django-cluster
 [dependencyci-image]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster/badge
 [dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-cluster
+[codacy-image]: https://api.codacy.com/project/badge/Grade/b276134fff7f47439a01fc6d85cf2ff9
+[codacy-url]: https://www.codacy.com/app/nirgn975/Angular-Django-Project-Seed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nirgn975/Angular-Django-Project-Seed&amp;utm_campaign=Badge_Grade
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
