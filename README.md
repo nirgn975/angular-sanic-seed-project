@@ -22,7 +22,7 @@ All the parts are in a separate [Docker](https://www.docker.com/) containers and
 
 ## Installation
 
-Automatic installation of the project with docker, for development.
+Automatic installation of the project with docker.
 
 1. In `client` directory run `docker build -t client .` to build the Docker image.
 2. In `server` directory run `docker build -t server .` to build the Docker image.
