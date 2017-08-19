@@ -23,6 +23,7 @@ export class UserService {
 
     return this.http.get(`${environment.server}/api/users`, options)
       .map(res => res.json())
+      .map(body => body.results)
       .catch(this.handleError);
   }
 
