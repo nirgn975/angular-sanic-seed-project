@@ -5,7 +5,7 @@ export interface State {
   entities: User[];
 }
 
-const initialState: State = {
+export const initialState: State = {
   entities: [{
     url: '',
     username: '',
