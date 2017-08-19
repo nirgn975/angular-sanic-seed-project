@@ -39,7 +39,7 @@ script:
   # Client
   - cd ../client && npm run lint
   - npm run test
-  - npm run build -- --prod
+  - npm run build
   - cd dist && ws --port 4200&
   - npm run e2e
 

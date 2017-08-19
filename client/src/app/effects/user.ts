@@ -17,7 +17,8 @@ export class UserEffects {
   @Effect()
   loadUser$: Observable<Action>= this.actions$
     .ofType(user.LOAD_USER)
-    .switchMap(() => this.userService.getUsers())
-    .map(users => new user.LoadUserSuccessAction(users));
-
+    .switchMap(_ => this.userService.getUsers()
+      .map(users => new user.LoadUserSuccessAction(users))
+      // .catch(error => Observable.of(getPostsFail(error)))
+    );
 }

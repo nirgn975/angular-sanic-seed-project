@@ -1,14 +1,18 @@
 import { User } from '../models/user';
 import * as user from '../actions/user';
 
-export type  State = User[];
+export interface State {
+  entities: User[];
+}
 
-const initialState: State = [{
-  url: '',
-  username: '',
-  email: '',
-  groups: [],
-}];
+export const initialState: State = {
+  entities: [{
+    url: '',
+    username: '',
+    email: '',
+    groups: [],
+  }],
+};
 
 export function reducer(state = initialState, action: user.Actions): State {
   switch (action.type) {
@@ -17,7 +21,9 @@ export function reducer(state = initialState, action: user.Actions): State {
     }
 
     case user.LOAD_USER_SUCCESS: {
-      return action.payload;
+      const newEntities = { entities: action.payload };
+
+      return Object.assign({}, state, newEntities);
     }
 
     default: {
@@ -25,3 +31,5 @@ export function reducer(state = initialState, action: user.Actions): State {
     }
   }
 }
+
+export const getEntities = (state: State) => state.entities;

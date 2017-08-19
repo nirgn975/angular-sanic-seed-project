@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private store: Store<fromRoot.State>,
   ) {
-    this.user$ = store.select(fromRoot.getUserState);
+    this.user$ = store.select(fromRoot.getUsersEntities);
   }
 
   ngOnInit() {

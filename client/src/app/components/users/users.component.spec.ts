@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { MaterialModule } from '@angular/material';
-import { reducer } from '../../reducers';
+import { reducers } from '../../reducers';
 import { StoreModule } from '@ngrx/store';
 import 'rxjs/add/observable/of';
 
@@ -32,7 +32,7 @@ describe('UsersComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MaterialModule,
-        StoreModule.provideStore(reducer)
+        StoreModule.forRoot(reducers),
       ],
       declarations: [ UsersComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
