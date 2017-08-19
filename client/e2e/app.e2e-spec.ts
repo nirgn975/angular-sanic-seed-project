@@ -1,9 +1,9 @@
-import { ClientPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('client App', () => {
-  let page: ClientPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new ClientPage();
+    page = new AppPage();
   });
 });

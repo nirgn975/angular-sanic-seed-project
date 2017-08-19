@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
-import { User } from '../models/user';
+import { UserResponse, User } from '../models/user';
 
 @Injectable()
 export class UserService {
@@ -23,6 +23,7 @@ export class UserService {
 
     return this.http.get(`${environment.server}/api/users`, options)
       .map(res => res.json())
+      .map(body => body.results)
       .catch(this.handleError);
   }
 
