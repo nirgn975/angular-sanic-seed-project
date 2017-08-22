@@ -14,6 +14,7 @@ node_js:
 
 services:
   - postgresql
+  - redis-server
 
 cache:
   npm: true
@@ -21,6 +22,7 @@ cache:
   - client/node_modules
 
 before_install:
+  - export REDIS=redis://localhost:6379/1
   - npm install -g npm@latest local-web-server codecov
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0

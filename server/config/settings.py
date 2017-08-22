@@ -154,7 +154,7 @@ REST_FRAMEWORK = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://{redis}:6379/1".format(redis=os.environ.get('REDIS', '')),
+        "LOCATION": os.environ.get('REDIS', ''),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
