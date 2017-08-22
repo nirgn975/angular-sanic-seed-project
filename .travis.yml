@@ -7,6 +7,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+      - redis-server
 
 language: node_js
 node_js:
@@ -14,7 +15,6 @@ node_js:
 
 services:
   - postgresql
-  - redis-server
 
 cache:
   npm: true

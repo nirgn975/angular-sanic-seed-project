@@ -151,7 +151,6 @@ REST_FRAMEWORK = {
 
 # Cache with redis
 # https://github.com/niwinz/django-redis/tree/4.3.0
-print('foo', os.environ.get('REDIS', ''))
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
