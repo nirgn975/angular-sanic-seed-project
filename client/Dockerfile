@@ -18,8 +18,7 @@ RUN npm install
 
 # Bundle app source
 COPY . /usr/src/app
-RUN npm run build -- --prod
-RUN npm run sw
+RUN npm run build
 
 EXPOSE 4200
 CMD ["nginx", "-g", "daemon off;"]
