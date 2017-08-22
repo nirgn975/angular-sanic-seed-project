@@ -7,7 +7,6 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-      - redis-server
 
 language: node_js
 node_js:
@@ -22,6 +21,11 @@ cache:
   - client/node_modules
 
 before_install:
+  - wget http://download.redis.io/releases/redis-4.0.1.tar.gz
+  - tar xzf redis-4.0.1.tar.gz
+  - cd redis-4.0.1
+  - make
+  - src/redis-server&
   - export REDIS=redis://localhost:6379/1
   - npm install -g npm@latest local-web-server codecov
   - export CHROME_BIN=chromium-browser
