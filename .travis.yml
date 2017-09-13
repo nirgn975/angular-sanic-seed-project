@@ -8,9 +8,9 @@ addons:
     packages:
       - google-chrome-stable
 
-language: node_js
-node_js:
-  - "8"
+language: python
+python:
+  - 3.6
 
 services:
   - postgresql
@@ -18,7 +18,7 @@ services:
 cache:
   npm: true
   directories:
-  - client/node_modules
+    - client/node_modules
 
 before_install:
   - npm install -g npm@latest local-web-server codecov
