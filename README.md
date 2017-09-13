@@ -24,6 +24,7 @@ All the parts are in a separate [Docker](https://www.docker.com/) containers and
 
 Automatic installation of the project with docker.
 
+0. If you work on `win` or `mac` please comment the lines of the `database -> volumes` in `docker-compose.yml`, this share volume with `linux` system only.
 1. In `client` directory run `docker build -t client .` to build the Docker image.
 2. In `server` directory run `docker build -t server .` to build the Docker image.
 3. To create a swarm `docker swarm init`.
