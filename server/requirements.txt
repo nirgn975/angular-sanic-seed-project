@@ -24,3 +24,6 @@ python-logstash==0.4.6
 
 # Testing
 locustio==0.8a2
+
+# Cache
+django-redis==4.8.0

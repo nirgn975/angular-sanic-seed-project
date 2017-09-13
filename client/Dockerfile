@@ -1,4 +1,4 @@
-FROM node:8.2.1
+FROM node:8.3.0
 MAINTAINER Nir Galon <nir@galon.io>
 
 # Install nginx

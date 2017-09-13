@@ -62,6 +62,7 @@ services:
       - DB_NAME=server
       - DB_USER=nirgalon
       - DB_PASS=Zaq1234
+      - REDIS=redis://redis:6379/1
       - SECRET_KEY=-#&29$$6a5n)za$$%q-9di^$$lxu5bvo!so=0e$$anel3o7^3oscz6
     command: bash -c "/home/app/server/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
     deploy:
@@ -138,6 +139,14 @@ services:
     ports:
       - "5959:5959/tcp"
       - "12201:12201/udp"
+    networks:
+      - example_cluster
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  redis:
+    image: redis:4.0.1
     networks:
       - example_cluster
     deploy:

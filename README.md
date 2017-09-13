@@ -35,7 +35,7 @@ Automatic installation of the project with docker.
     * `docker pull elasticsearch:5.4.3`  
     * `docker pull kibana:5.4.3`  
     * `docker pull logstash:5.4.3`  
-5. Run `docker stack deploy --compose-file=docker-compose.yml prod`
+5. Run `docker stack deploy --compose-file=docker-compose-prod.yml prod`
 6. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
 7. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
 8. Open the browser at [http://localhost:8080](http://localhost:8080) to see the visualizer.
