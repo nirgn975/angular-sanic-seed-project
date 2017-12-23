@@ -1,33 +1,29 @@
+import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
 import { UserResponse, User } from '../models/user';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
   ) { }
 
-  private appendToken(): RequestOptions {
-    const headers = new Headers();
-    headers.append('Authorization', `Basic ${btoa('admin:pass')}`);
-    return new RequestOptions({ headers: headers });
+  private appendToken(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Basic ${btoa('admin:pass')}`
+    });
   }
 
   getUsers(): Observable<User[]> {
-    const options = this.appendToken();
+    const headers = this.appendToken();
 
-    return this.http.get(`${environment.server}/api/users`, options)
-      .map(res => res.json())
-      .map(body => body.results)
-      .catch(this.handleError);
+    return this.http.get<UserResponse>(`${environment.server}/api/users`, { headers: headers })
+      .map(body => body.results);
   }
 
-  private handleError(error: Response) {
-    return Observable.throw(error.json().error || 'Server error');
-  }
 }

@@ -1,11 +1,13 @@
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
+import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { UserService } from '../services/user.service';
-import * as user from '../actions/user';
+import * as userActions from '../actions/user';
 
 @Injectable()
 export class UserEffects {
@@ -15,10 +17,10 @@ export class UserEffects {
   ) { }
 
   @Effect()
-  loadUser$: Observable<Action>= this.actions$
-    .ofType(user.LOAD_USER)
+  loadUser$: Observable<Action> = this.actions$
+    .ofType<userActions.LoadUsersAction>('LOAD_USERS')
     .switchMap(_ => this.userService.getUsers()
-      .map(users => new user.LoadUserSuccessAction(users))
-      // .catch(error => Observable.of(getPostsFail(error)))
+      .map(data => new userActions.LoadUsersSuccessAction(data))
+      .catch(() => of({ type: 'LOAD_USERS_FAILED' }))
     );
 }

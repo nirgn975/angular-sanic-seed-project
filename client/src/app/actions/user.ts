@@ -1,21 +1,21 @@
 import { Action } from '@ngrx/store';
 import { User } from '../models/user';
 
-export const LOAD_USER =  '[User] Load User';
-export const LOAD_USER_SUCCESS = '[User] Load User Success';
+export const LOAD_USERS =  '[User] Load Users';
+export const LOAD_USERS_SUCCESS = '[User] Load Users Success';
 
-export class LoadUserAction implements Action {
-  readonly type = LOAD_USER;
+export class LoadUsersAction implements Action {
+  readonly type = LOAD_USERS;
 
   constructor() { }
 }
 
-export class LoadUserSuccessAction implements Action {
-  readonly type = LOAD_USER_SUCCESS;
+export class LoadUsersSuccessAction implements Action {
+  readonly type = LOAD_USERS_SUCCESS;
 
   constructor(public payload: User[]) { }
 }
 
 export type Actions
-  = LoadUserAction
-  | LoadUserSuccessAction;
+  = LoadUsersAction
+  | LoadUsersSuccessAction;

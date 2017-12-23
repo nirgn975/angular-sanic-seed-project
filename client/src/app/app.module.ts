@@ -1,10 +1,12 @@
-import 'hammerjs';
-
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 
-import { MaterialModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatMenuModule,
+  MatButtonModule,
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
@@ -30,9 +32,11 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
-    MaterialModule,
+    MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
