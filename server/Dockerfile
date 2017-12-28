@@ -3,7 +3,7 @@ MAINTAINER Nir Galon <nir@galon.io>
 
 ENV APP_DIR /home/app
 
-ADD . $APP_DIR
+COPY . $APP_DIR
 WORKDIR $APP_DIR
 EXPOSE 8000
 

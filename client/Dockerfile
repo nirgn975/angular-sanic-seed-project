@@ -1,4 +1,4 @@
-FROM nginx:1.13.7
+FROM nginx:1.13.7-alpine
 MAINTAINER Nir Galon <nir.galon@webintpro.com>
 WORKDIR /usr/share/nginx/html
 
