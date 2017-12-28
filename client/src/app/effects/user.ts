@@ -1,10 +1,10 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
+import { Action } from '@ngrx/store';
 import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Effect, Actions } from '@ngrx/effects';
 
 import { UserService } from '../services/user.service';
 import * as userActions from '../actions/user';
