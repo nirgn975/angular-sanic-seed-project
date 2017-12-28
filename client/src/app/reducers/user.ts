@@ -16,11 +16,11 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: user.Actions): State {
   switch (action.type) {
-    case user.LOAD_USER: {
+    case user.LOAD_USERS: {
       return initialState;
     }
 
-    case user.LOAD_USER_SUCCESS: {
+    case user.LOAD_USERS_SUCCESS: {
       const newEntities = { entities: action.payload };
 
       return Object.assign({}, state, newEntities);

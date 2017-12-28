@@ -22,9 +22,9 @@ services:
       - POSTGRES_USER=nirgalon
       - POSTGRES_PASSWORD=Zaq1234
       - POSTGRES_DB=server
-    volumes:
-      - ./database:/etc/cron.daily
-      - /var/backups:/var/backups
+    # volumes:
+    #   - ./database:/etc/cron.daily
+    #   - /var/backups:/var/backups
     deploy:
       replicas: 1
       restart_policy:
@@ -38,8 +38,6 @@ services:
     image: client
     ports:
       - "4200:4200"
-    environment:
-      - SERVICE_PORTS=4200
     deploy:
       replicas: 1
       update_config:
@@ -62,8 +60,9 @@ services:
       - DB_NAME=server
       - DB_USER=nirgalon
       - DB_PASS=Zaq1234
-      - SECRET_KEY=-#&29$$6a5n)za$$%q-9di^$$lxu5bvo!so=0e$$anel3o7^3oscz6
-    command: bash -c "/home/app/server/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
+      - SECRET_KEY=u$m9fzzf4-0=jant&2=k#n!_lh28yrk_*$$e5^!l0s%&m)f09*
+      - SERVICE_PORTS=8000
+    command: bash -c "/home/app/entrypoint.sh && gunicorn config.wsgi -b 0.0.0.0:8000"
     deploy:
       replicas: 2
       update_config:
@@ -75,18 +74,6 @@ services:
         window: 120s
     depends_on:
       - database
-    networks:
-      - example_cluster
-
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
     networks:
       - example_cluster
 

@@ -1,16 +1,16 @@
 ## Server
 
-The server (backend) side of the project written [Python](https://www.python.org/) using [Django 1.11](https://www.djangoproject.com/), [Django REST framework](http://www.django-rest-framework.org/).
+The server (backend) side of the project written [Python](https://www.python.org/) using [Django 2.0](https://www.djangoproject.com/), [Django REST framework](http://www.django-rest-framework.org/).
 
 ## Prerequisites
 
 * Install [Python 3.x](https://www.python.org/)
-* Install [Pip](https://pypi.python.org/pypi/pip)
+* Install [pipenv](https://github.com/pypa/pipenv)
 
 ## Manual Installation
 
 1. `cd server/config` then `cp local_settings.template local_settings.py` and modify it by your local settings
-2. Install requirements with `pip install -r requirements.txt`
+2. Install requirements with `pipenv install`
 3. Migrate the data with `python manage.py migrate`
 4. Run the server with `python manage.py runserver`
 5. Open the browser at [http://localhost:8000](http://localhost:8000)

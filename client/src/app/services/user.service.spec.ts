@@ -1,67 +1,57 @@
-import { TestBed, async, inject } from '@angular/core/testing';
-import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { TestBed, getTestBed } from '@angular/core/testing';
+import { HttpClientModule, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { UserResponse, User } from '../models/user';
 import { UserService } from './user.service';
+import { UserResponse, User } from '../models/user';
+import { environment } from '../../environments/environment';
 
 describe('UserService', () => {
+  let injector: TestBed;
+  let service: UserService;
+  let httpMock: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [
-        UserService,
-        {
-          provide: Http,
-          useFactory: (mockBackend, options) => {
-            return new Http(mockBackend, options);
-          },
-          deps: [MockBackend, BaseRequestOptions]
-        },
-        MockBackend,
-        BaseRequestOptions,
-      ]
+      imports: [ HttpClientTestingModule ],
+      providers: [ UserService ]
     });
+
+    injector = getTestBed();
+    service = injector.get(UserService);
+    httpMock = injector.get(HttpTestingController);
   });
 
-  it('should create the service', inject([UserService], (service: UserService) => {
-    expect(service).toBeTruthy();
-  }));
+  afterEach(() => {
+    httpMock.verify();
+  });
 
-  it('should GET all the users',
-  inject([UserService, MockBackend], (service: UserService, mockBackend: MockBackend) => {
-    const user1 = {
-      'url': 'http://localhost:8000/api/users/2/',
-      'username': 'nir',
-      'email': '',
-      'groups': []
-    } as User;
-    const user2 = {
-      'url': 'http://localhost:8000/api/users/1/',
-      'username': 'admin',
-      'email': 'admin@example.com',
-      'groups': []
-    } as User;
-    const mockResponse: UserResponse = {
-      count: 2,
-      next: null,
-      previous: null,
-      results: [user1, user2],
-    };
+  it('should return an Observable<User[]>', () => {
+      const dummyUsers = [{
+        'url': 'http://localhost:8000/api/users/1/',
+        'username': 'nir',
+        'email': 'nir@example.com',
+        'groups': []
+      }, {
+        'url': 'http://localhost:8000/api/users/2/',
+        'username': 'adi',
+        'email': 'adi@example.com',
+        'groups': []
+      }];
+      const mockResponse: UserResponse = {
+        count: 2,
+        next: null,
+        previous: null,
+        results: dummyUsers,
+      };
 
-    mockBackend.connections.subscribe((connection) => {
-      connection.mockRespond(new Response(new ResponseOptions({
-        body: JSON.stringify(mockResponse)
-      })));
+      service.getUsers().subscribe(users => {
+        expect(users.length).toBe(2);
+        expect(users).toEqual(dummyUsers);
+      });
+
+      const req = httpMock.expectOne(`${environment.server}/api/users`);
+      expect(req.request.method).toBe('GET');
+      req.flush(mockResponse);
     });
-
-    service.getUsers().subscribe(users => {
-      expect(users.length).toEqual(2);
-      expect(users[0].username).toEqual('nir');
-      expect(users[0].url).toEqual('http://localhost:8000/api/users/2/');
-      expect(users[1].username).toEqual('admin');
-      expect(users[1].email).toEqual('admin@example.com');
-    });
-  }));
-
 });
