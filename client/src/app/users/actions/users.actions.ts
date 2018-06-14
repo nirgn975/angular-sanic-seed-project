@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { User } from '../models/user.model';
+import { User, UsersResponse } from '../models/user.model';
 
 export enum UsersActionTypes {
   LoadUsers = '[Users] Load All Users',
@@ -17,7 +17,7 @@ export class LoadUsersAction implements Action {
 export class LoadUsersSuccessAction implements Action {
   readonly type = UsersActionTypes.LoadUsersSuccess;
 
-  constructor(public payload: User[]) {}
+  constructor(public payload: UsersResponse) {}
 }
 
 export class LoadUsersFailedAction implements Action {
