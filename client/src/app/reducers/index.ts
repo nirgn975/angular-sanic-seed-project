@@ -18,3 +18,8 @@ export const reducers: ActionReducerMap<State> = {
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+/**
+ * Layout Reducers
+ */
+export const getUsersState = createFeatureSelector<fromUsers.State>('users');

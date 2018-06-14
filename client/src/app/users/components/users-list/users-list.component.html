@@ -1,6 +1,3 @@
-<p>
-  users-list works!
-</p>
-
-
-<client-user></client-user>
+<mat-card *ngFor='let user of users$ | async'>
+  <client-user [user]='user'></client-user>
+</mat-card>

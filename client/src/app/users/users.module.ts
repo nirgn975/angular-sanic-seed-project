@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatCardModule } from '@angular/material';
+
 import { EffectsModule } from '@ngrx/effects';
 
 import { UsersRoutingModule } from './users-routing.module';
@@ -20,6 +22,7 @@ import { environment } from '../../environments/environment';
     CommonModule,
     HttpClientModule,
     UsersRoutingModule,
+    MatCardModule,
     EffectsModule.forRoot([
       UsersEffects,
     ])

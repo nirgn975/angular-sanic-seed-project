@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../../../reducers';
 import { User } from '../../models/user.model';
 import { LoadUsersAction } from '../../actions/users.actions';
 
@@ -20,6 +20,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LoadUsersAction());
+    this.users$ = this.store.select(fromRoot.getUsersState);
   }
 
 }
