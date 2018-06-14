@@ -1,5 +1,6 @@
 from sanic import Sanic
 from sanic.response import json
+from sanic_cors import CORS
 
 from api.users.routes import users_routes
 from util.middlewares import handle_request, handle_response
@@ -7,6 +8,7 @@ from util.middlewares import handle_request, handle_response
 # Start the app and load environment variables.
 app = Sanic(load_env=True)
 app.config.from_envvar('ENV_VARS')
+CORS(app)
 
 
 # root route

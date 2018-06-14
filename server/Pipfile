@@ -11,6 +11,7 @@ sanic = "*"
 aiopg = "*"
 peewee-async = "*"
 peewee = "*"
+sanic-cors = "*"
 
 
 [dev-packages]
