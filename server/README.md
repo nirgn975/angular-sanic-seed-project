@@ -12,8 +12,7 @@ The server (backend) side of the project written [Python](https://www.python.org
 
 1. Create a file called `.env` at the root of the project and write the configurations of the server there. Here is an example of the `.env` file:
 ```
-DB_URI = 'mongodb://localhost:27017/assp'
-JWT = 'ASSP'
+DB_URI = 'postgres://nirgalon:@localhost:5432/assp'
 PORT = '8000'
 LOG_LEVEL = 'info'
 ENV = 'development'

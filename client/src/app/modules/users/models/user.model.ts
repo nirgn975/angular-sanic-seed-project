@@ -1,16 +1,10 @@
 export interface User {
-  _id?: string;
-  updatedAt?: string;
-  createdAt?: string;
+  _id?: number;
+  name: string;
+  age: string;
   email: string;
-  username: string;
-  password?: string;
-  auth: string;
-  role: string;
-  active: boolean;
-  firstName: string;
-  lastName: string;
-  __v?: number;
+  date_joined: number;
+  dirty_fields: Array<string>;
 }
 
 export interface UsersResponse {
