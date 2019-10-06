@@ -1,0 +1,17 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="mdl-cell">
+    <input matInput type="string" placeholder="Username" value="" color="accent" type="text" formControlName="username">
+    <mat-error *ngIf="loginForm.controls.username.invalid">{{ getErrorMessage('username') }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mdl-cell">
+    <input matInput type="string" placeholder="Password" value="" color="accent" type="password" formControlName="password">
+    <mat-error *ngIf="loginForm.controls.password.invalid">{{ getErrorMessage('password') }}</mat-error>
+  </mat-form-field>
+
+  <a class="mdl-cell" routerLink="/forgot-password" routerLinkActive="active">Forgot password?</a>
+
+  <div class="mdl-cell">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+  </div>
+</form>

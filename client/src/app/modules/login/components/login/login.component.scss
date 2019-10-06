@@ -1,0 +1,29 @@
+:host(.login-view) {
+  background: url('/assets/sign_in_background.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+mat-card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-card-image {
+  width: 80%;
+  margin: 0;
+}
