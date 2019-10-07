@@ -1,6 +1,5 @@
 from os import getenv
 from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
 from sanic import Sanic
 from sanic.response import json
 from sanic_cors import CORS
@@ -8,6 +7,8 @@ from sanic_cors import CORS
 from api.users.routes import users_routes
 from util.config import connect_to_db
 from util.seed import seed_db
+
+load_dotenv(find_dotenv())
 
 # Start the app.
 app = Sanic(load_env=True)
