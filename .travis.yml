@@ -15,14 +15,14 @@ matrix:
       services:
         - postgresql
       before_script:
-        - cd server && pip install coverage pycodestyle
+        - cd server && pip install coverage pycodestyle python-dotenv
         - pip install -r requirements.txt
         - psql -c 'create database server;' -U postgres
       script:
         - python -m unittest
         - pycodestyle --show-source --max-line-length=120 --show-pep8 .
 
-    - language: nodejs
+    - language: node_js
       node_js:
         - v12
       before_install:
