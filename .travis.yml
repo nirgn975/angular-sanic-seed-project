@@ -6,6 +6,7 @@ addons:
     sources:
       - google-chrome
     packages:
+      - nodejs
       - google-chrome-stable
 
 language: python
@@ -15,10 +16,10 @@ python:
 services:
   - postgresql
 
-cache:
-  npm: true
-  directories:
-    - client/node_modules
+# cache:
+#   npm: true
+#   directories:
+#     - client/node_modules
 
 before_install:
   - npm install -g npm@latest local-web-server codecov
