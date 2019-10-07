@@ -9,9 +9,9 @@ aiopg = "*"
 peewee-async = "*"
 peewee = "*"
 sanic-cors = "*"
+python-dotenv = "*"
 
 [dev-packages]
-python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
