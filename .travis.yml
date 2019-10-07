@@ -9,8 +9,7 @@ matrix:
         - pip install -r requirements.txt
         - psql -c 'create database server;' -U postgres
       script:
-        - coverage run --source='.' manage.py test
-        - coverage xml
+        - ENV_VARS=.env python -m unittest
         - pycodestyle --show-source --max-line-length=120 --show-pep8 .
 
     - language: nodejs

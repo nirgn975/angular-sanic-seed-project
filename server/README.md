@@ -24,4 +24,4 @@ ENV = 'development'
 
 ## Tests
 
-Not Yet..
+To run all tests `ENV_VARS=.env python -m unittest`

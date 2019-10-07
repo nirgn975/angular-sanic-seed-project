@@ -3,7 +3,6 @@ from sanic.response import json
 from sanic_cors import CORS
 
 from api.users.routes import users_routes
-from util.middlewares import auth
 from util.config import connect_to_db
 from util.seed import seed_db
 
@@ -23,9 +22,6 @@ async def root(request):
 
 # Register all blueprints.
 app.blueprint(users_routes)
-
-# Register all middlewares.
-app.register_middleware(auth, 'request')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
