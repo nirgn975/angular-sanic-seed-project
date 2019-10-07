@@ -25,7 +25,7 @@ matrix:
     - language: nodejs
       node_js:
         - v12
-      before_script:
+      before_install:
         - npm install -g npm@latest codecov
       install:
         - cd client && npm install
