@@ -17,7 +17,7 @@ matrix:
       before_script:
         - cd server && pip install coverage pycodestyle python-dotenv
         - pip install -r requirements.txt
-        - psql -c 'create database server;' -U postgres
+        - psql -c 'create database assp;' -U postgres
       script:
         - python -m unittest
         - pycodestyle --show-source --max-line-length=120 --show-pep8 .
@@ -25,10 +25,15 @@ matrix:
     - language: node_js
       node_js:
         - v12
+      addons:
+        chrome: stable
       before_install:
         - npm install -g npm@latest codecov
       install:
         - cd client && npm install
+        - export CHROME_BIN=chromium-browser
+        - export DISPLAY=:99.0
+        - sh -e /etc/init.d/xvfb start
       script:
         - npm run lint
         - npm run test
