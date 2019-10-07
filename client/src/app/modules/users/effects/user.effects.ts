@@ -8,9 +8,6 @@ import {
 } from '../actions/user.actions';
 import { UserService } from '../services/user.service';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FeedbackMessageComponent } from '../../core/components/feedback-message/feedback-message.component';
-
 
 @Injectable()
 export class UserEffects {
@@ -27,23 +24,9 @@ export class UserEffects {
     )
   );
 
-  loadAllUsersFailed$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fetchUsersFailed),
-      tap((action) => {
-        this._snackBar.openFromComponent(FeedbackMessageComponent, {
-          duration: 5000,
-          data: `Load data failed, because: ${action.error.message}`,
-        });
-      })
-    ),
-    { dispatch: false }
-  );
-
   constructor(
     private actions$: Actions,
     private userService: UserService,
-    private _snackBar: MatSnackBar,
   ) {}
 
 }

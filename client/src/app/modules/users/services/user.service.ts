@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { User, UsersResponse, UserResponse } from '../models/user.model';
+import { User, UsersResponse } from '../models/user.model';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -15,6 +15,6 @@ export class UserService {
   ) { }
 
   getUsers(): Observable<UsersResponse> {
-    return this.http.get<UsersResponse>(`${environment.backend}/user`);
+    return this.http.get<UsersResponse>(`${environment.backend}/users`);
   }
 }
