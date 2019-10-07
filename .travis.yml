@@ -5,7 +5,7 @@ matrix:
       env:
         - DB_URI="postgres://nirgalon:@localhost:5432/assp"
         - DB_NAME="assp"
-        - DB_USER="nirgalon"
+        - DB_USER="postgres"
         - DB_PASSWORD=""
         - DB_PORT="5432"
         - HOST="0.0.0.0"
