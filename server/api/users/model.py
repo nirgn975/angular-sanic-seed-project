@@ -1,8 +1,10 @@
+from os import getenv
 from datetime import date
 from playhouse.db_url import connect
 from peewee import Model, CharField, TextField, DateField
 
-psql_db = connect('postgres://nirgalon:@localhost:5432/assp')
+print("foo", getenv('DB_URI'))
+psql_db = connect(getenv('DB_URI'))
 
 
 class User(Model):

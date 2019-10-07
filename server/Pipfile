@@ -1,23 +1,17 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 sanic = "*"
 aiopg = "*"
 peewee-async = "*"
 peewee = "*"
 sanic-cors = "*"
 
-
 [dev-packages]
-
-
+python-dotenv = "*"
 
 [requires]
-
 python_version = "3.7"

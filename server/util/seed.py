@@ -1,10 +1,11 @@
+from os import getenv
 from json import loads
 from peewee import OperationalError
 from playhouse.db_url import connect
 
 from api.users.model import User
 
-psql_db = connect('postgres://nirgalon:@localhost:5432/assp')
+psql_db = connect(getenv('DB_URI'))
 
 
 def seed_db():
