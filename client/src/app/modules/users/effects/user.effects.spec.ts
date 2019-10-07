@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { UserEffects } from './user.effects';
 
 describe('UserEffects', () => {
-  let actions$: Observable<any>;
+  const actions$: Observable<any>;
   let effects: UserEffects;
 
   beforeEach(() => {

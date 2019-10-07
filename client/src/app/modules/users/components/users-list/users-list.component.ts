@@ -12,7 +12,7 @@ import * as fromUsers from '../../reducers';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, OnDestroy {
-  showSpinner: boolean = true;
+  showSpinner = true;
   allUsers: Array<User>;
   usersState$;
 
@@ -21,7 +21,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log("in ngOnInit");
     this.store.dispatch(UserActions.fetchUsers());
 
     this.usersState$ = this.store.pipe(select(fromUsers.getUsers))

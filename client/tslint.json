@@ -12,13 +12,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "assp",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "assp",
       "kebab-case"
     ],
     "import-blacklist": [
@@ -73,6 +73,7 @@
     ],
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
+    "no-empty-interface": false,
     "no-host-metadata-property": true,
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
