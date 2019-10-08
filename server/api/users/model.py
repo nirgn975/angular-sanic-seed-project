@@ -1,9 +1,10 @@
 from os import getenv
 from datetime import date
 from playhouse.db_url import connect
+from dotenv import load_dotenv, find_dotenv
 from peewee import Model, CharField, TextField, DateField
 
-print("foo", getenv('DB_URI'))
+load_dotenv(find_dotenv())
 psql_db = connect(getenv('DB_URI'))
 
 
