@@ -1,5 +1,4 @@
 from os import getenv
-from json import loads
 from peewee import OperationalError
 from playhouse.db_url import connect
 
@@ -19,4 +18,4 @@ def seed_db():
         print("cannot create postgres tables", e)
 
     # Create dummy data.
-    new_user = User.create(name="nir", age="29", email="nir@example.com")
+    User.create(name="nir", age="29", email="nir@example.com")
