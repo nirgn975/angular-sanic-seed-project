@@ -28,7 +28,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
         this.allUsers = state.users;
 
         // Stop spinner if there is any data.
-        if (this.allUsers.length >= 1) {
+        if (this.allUsers && this.allUsers.length >= 1) {
           this.showSpinner = false;
         }
       });

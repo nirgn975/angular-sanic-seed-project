@@ -22,7 +22,7 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [] :
 /**
  * Layout Reducers
  */
-export const getUsrsState = createFeatureSelector<fromUser.State>('user');
+export const getUsrsState = createFeatureSelector<fromUser.State>('users');
 
 export const getUsers = createSelector(
   getUsrsState,

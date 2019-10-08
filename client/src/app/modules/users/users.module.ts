@@ -27,7 +27,7 @@ import { environment } from '../../../environments/environment';
     CommonModule,
     UsersRoutingModule,
     MaterialModule,
-    StoreModule.forFeature('user', reducers, { metaReducers }),
+    StoreModule.forFeature('users', reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forFeature([UserEffects]),
   ],
