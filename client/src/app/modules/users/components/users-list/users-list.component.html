@@ -1,0 +1,16 @@
+<mat-progress-spinner *ngIf="showSpinner"
+  mode="indeterminate"
+  color="accent">
+</mat-progress-spinner>
+
+<div *ngIf="!showSpinner">
+  <mat-card *ngFor="let user of allUsers">
+    <mat-card-header>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Age: {{ user.age }}<p>
+      <p>Email: {{ user.email }}<p>
+    </mat-card-content>
+  </mat-card>
+</div>
