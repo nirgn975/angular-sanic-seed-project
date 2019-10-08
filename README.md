@@ -135,7 +135,7 @@ Just fork and do a pull request (;
 [dependencyci-url]: https://dependencyci.com/github/nirgn975/Angular-Django-Seed-Project
 [codacy-image]: https://api.codacy.com/project/badge/Grade/cdf4939e98804872b377a4120a4f4571
 [codacy-url]: https://www.codacy.com/app/nirgn975/Angular-Django-Seed-Project?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nirgn975/Angular-Django-Seed-Project&amp;utm_campaign=Badge_Grade
-[maintenance-image]: https://img.shields.io/maintenance/yes/2017.svg
+[maintenance-image]: https://img.shields.io/maintenance/yes/2019.svg
 [maintenance-url]: https://github.com/nirgn975
 [donate-image]: https://img.shields.io/badge/PayPal-Donate-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
