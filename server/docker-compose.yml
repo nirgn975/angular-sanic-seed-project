@@ -5,7 +5,7 @@ services:
     container_name: app1
     restart: always
     build:
-      context: ./
+      context: .
       dockerfile: ./Dockerfile
     ports:
         - "7338:7338"
