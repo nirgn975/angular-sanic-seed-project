@@ -1,0 +1,12 @@
+version: "2"
+services:
+  Angular-Sanic-Seed-Project:
+    image: angular-sanic-server:t1
+    container_name: app1
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+        - "7338:7338"
+    command: print ("hi")
