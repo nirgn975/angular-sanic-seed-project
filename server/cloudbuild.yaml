@@ -1,0 +1,24 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/raptor:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/raptor:$SHORT_SHA']
+- name: gcr.io/cloud-builders/wget
+  args: ['-O', 'sigil.tgz', 'https://github.com/gliderlabs/sigil/releases/download/v0.4.0/sigil_0.4.0_Linux_x86_64.tgz']
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    export APP_VERSION
+    export NAMESPACE
+    export CLUSTER_NAME
+    IFS=/ read -r APP_VERSION CLUSTER_NAME NAMESPACE <<< "$TAG_NAME"
+    gcloud components install kubectl
+    gcloud container clusters get-credentials $_CLUSTER_NAME --zone $_ZONE_NAME
+    export TAG_NAME=$TAG_NAME
+    export PROJECT_ID=$PROJECT_ID
+    export ENVIRONMENT=$_ENVIRONMENT
+    export SHORT_SHA=$SHORT_SHA
+    tar zxvf sigil.tgz
+    ./sigil -p -f kubernetes/server.yaml | kubectl apply -f -

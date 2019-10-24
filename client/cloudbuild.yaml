@@ -1,0 +1,24 @@
+steps:
+- name: 'gcr.io/cloud-builders/npm:current'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/npm:current'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    export APP_VERSION
+    export NAMESPACE
+    IFS=/ read -r APP_VERSION NAMESPACE <<< "$TAG_NAME"
+    npm run build
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    export APP_VERSION
+    export NAMESPACE
+    IFS=/ read -r APP_VERSION NAMESPACE <<< "$TAG_NAME"
+    gsutil mb -l $_REGION_NAME gs://client.example.com/
+    gsutil cp -r dist/client/* gs://client.example.com/
+    gsutil iam ch allUsers:objectViewer gs://client.example.com/
+    gsutil web set -m index.html -e 404.html gs://client.example.com/
