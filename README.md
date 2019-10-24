@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/nirgn975/Angular-Django-Seed-Project/master/angular-django-seed-project.png" />
+<img src="https://raw.githubusercontent.com/nirgn975/Angular-Django-Seed-Project/master/art/angular-django-seed-project.png" />
 
 [![license][license-image]][license-url] [![GitHub release][github-image]][github-url] [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![Dependency Status][dependencyci-image]][dependencyci-url] [![Codacy Badge][codacy-image]][codacy-url] [![Maintenance][maintenance-image]][maintenance-url] [![Donate][donate-image]][donate-url]
 
@@ -6,64 +6,52 @@ This repo is a production ready seed project. The app shows a list of users.
 
 ## Structure
 
-* The `client` service is a build of the `client` directory. It contain an [Angular](https://angular.io/) app, built with [Angular-Cli](https://github.com/angular/angular-cli), [ngrx](https://github.com/ngrx) to handle state, [Angular Material](https://github.com/angular/material2) as a design library, have service worker, and `AOT` compiled. The app shows the users from the Django api.
-* The `server` service is a build of the `server` directory. It contain a simple [Django](https://www.djangoproject.com/) app that expose an `api` of Django `users` with [Django REST framework](http://www.django-rest-framework.org/). The Python serve through a [gunicorn](http://gunicorn.org/) server installed in the container.
-* There is a `postgres` service for the Django database. The `database` directory contains the automatic backup script.
-* There is an `nginx` service to serve static files (the client app).
-* There is an `haproxy` service to get all the HTTP requests and do load balancing between the containers in the services.
-* There are a separate containers for the [ELK Stack](https://www.elastic.co/products) for logging. The `server` and the `client` logs sent to logstash, and saved in elasticsearch. There is also a kibana instance to check and analyze all the logs.
-* There is a `visualizer` container to visualize where is each container is located at (on which server).
+* The `client` contain an [Angular](https://angular.io/) app, built with [Angular-Cli](https://github.com/angular/angular-cli), and [ngrx](https://github.com/ngrx) to handle state, [Angular Material](https://github.com/angular/material2) as a design library, and have service worker, and `AOT` compiled. The app shows the users from the Sanic api.
+* The `server` contain a simple [Sanic](https://sanic.readthedocs.io) app that expose an `api` of `users`. The Python serve through a [gunicorn](http://gunicorn.org/) server installed in the container.
+* There is a `postgres` service for the database. The `database` directory contains the automatic backup script.
+* All the logs are going to `stdout` and can be collected through any service.
+* There are built in test that configured to run on `travis-ci`, and a code coverage analysis via `codecov`.
 
-All the parts are in a separate [Docker](https://www.docker.com/) containers and we use [Docker Swarm](https://docs.docker.com/engine/swarm/) to manage them.
+The `client` app is built via the cloud build CI on GCP and deployed to the GCP `storage`.
+The `server` app is built via the cloud build CI as a docker image and deployed to a `GKE cluster` on GCP (managed by Kubernetes).
+The PostgreSQL `database` is built via the cloud build CI as a docker image and deployed to a `GKE cluster` on GCP (managed by Kubernetes).
 
-## Pre Requirements
+## Production Installation
 
-1. install [docker](https://www.docker.com/).
+Deploy the `client` app:
+1. Create a storage bucket with the name of the Domain you have.
+2. Create a cloud build trigger with the parameters in the [screenshot](art/client-trigger.jpg) (change the `_REGION_NAME` to the location of the bucket you created in the previous step).
+3. Now you can deploy your `client` app by creating a new tag in the `v0.0.1/prod/prod` format and push it to github (`git push --tags`).
 
-## Installation
+Deploy the `server` app:
+1. Create a `GKE` cluster on GCP.
+2. Create a cloud build trigger with the parameters in the [screenshot](art/servier-trigger.jpg) (change the `_REGION_NAME` to the location of the `GKE` cluster you created in step 1).
+3. Connect to the `GKE` cluster using `gcloud container clusters get-credentials prod` and then create a `tiler` using the commands:
+ 1. `kubectl create serviceaccount --namespace kube-system tiller`
+ 2. `kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller`
+ 3. `kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'`
+ 4. `helm init --service-account tiller --upgrade`
+4. Then change the `helm` permissions by navigate to `server/kubernetes` in the command line and then write `kubectl apply -f helm-permissions.yaml`.
+5. Now you can deploy your `server` app by create a new tag in the `v0.0.1/prod/prod` format and push it to github (`git push --tags`).
 
-Automatic installation of the project with docker.
-
-0. If you work on `win` or `mac` please comment the lines of the `database -> volumes` in `docker-compose.yml`, this share volume with `linux` system only.
-1. In `client` directory run `docker build -t client .` to build the Docker image.
-2. In `server` directory run `docker build -t server .` to build the Docker image.
-3. To create a swarm `docker swarm init`.
-4. Download all docker images:
-    * `docker pull dockercloud/haproxy`  
-    * `docker pull postgres`  
-    * `docker pull dockersamples/visualizer:stable`  
-    * `docker pull elasticsearch:5.4.3`  
-    * `docker pull kibana:5.4.3`  
-    * `docker pull logstash:5.4.3`  
-5. Run `docker stack deploy --compose-file=docker-compose.yml prod`
-6. Open the browser at [http://localhost](http://localhost) to see your Angular (client) app.
-7. Open the browser at [http://localhost:8000](http://localhost:8000) to see your Django (server) app.
-8. Open the browser at [http://localhost:8080](http://localhost:8080) to see the visualizer.
-9. Open the browser at [http://localhost:5601](http://localhost:5601) to see Kibana and check your logs.
-
-**If you want to install the project manually, go to the `/client` or `/server` directories and read the `README` file.**
+Create a Cloud DNS record:
+1. Create a Cloud DNS record on GCP. In this record you should add an `A` record to the kubernetes cluster (the server) and place there your load balancer ip address you get in the "Deploy the `server` app", and a `CNAME` record to our Storage bucket (client app) [screenshot](art/cloud_dns.jpg).
 
 ## Our Stack
 
 * [Angular](https://angular.io/)
-* [Django](https://www.djangoproject.com/)
-* [PostgreSQL](http://www.postgresql.org/)
+* [Sanic](https://www.djangoproject.com/)
+* [PostgreSQL](https://sanic.readthedocs.io)
 * [Docker](https://www.docker.com/)
 
 **Tools we use**
 
-  * [Angular Material](https://material.angular.io/)
+  * [Angular Material](https://material.angular.io)
   * [ngrx](https://github.com/ngrx)
-  * [Django REST framework](http://www.django-rest-framework.org/)
-  * [django-admin-honeypot](http://django-admin-honeypot.readthedocs.io/en/latest/)
-  * [ELK Stack](https://www.elastic.co/products)
-  * [Docker Swarm](https://docs.docker.com/engine/swarm/)
-
-## Django Admin
-
-  * When install the project with docker, there is an `entrypoint.sh` script that runs in the `server` container. It'll migrate the database and create a new super user with a username `admin` and a password `pass`.
-  * We use [django-admin-honeypot](https://github.com/dmpayton/django-admin-honeypot) to fake the default Django admin login screen to log and notify admins of attempted unauthorized access. So the real Django admin login screen will be under `/secret-admin`.
-  * We also use [django-flat-responsive](https://github.com/elky/django-flat-responsive) to make the Django admin screens responsive to mobile.
+  * [Peewee](http://docs.peewee-orm.com)
+  * [Kubernetes](https://kubernetes.io)
+  * [Travis-CI](https://travis-ci.org)
+  * [Codecov](https://codecov.io)
 
 ## Tests
 
