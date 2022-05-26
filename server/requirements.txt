@@ -19,7 +19,7 @@ rfc3986==1.3.2
 sanic==19.6.3
 Sanic-Cors==0.9.9.post3
 Sanic-Plugins-Framework==0.8.2
-ujson==1.35
+ujson==5.2.0
 urllib3==1.25.6
 uvloop==0.13.0
 websockets==7.0
