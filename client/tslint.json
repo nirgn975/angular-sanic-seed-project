@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+<<<<<<< HEAD
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -16,17 +17,36 @@
       "camelCase"
     ],
     "component-selector": [
+=======
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": [
+>>>>>>> b72a69f (Update dependencies (#20))
       true,
       "element",
       "assp",
       "kebab-case"
     ],
+<<<<<<< HEAD
     "import-blacklist": [
+=======
+    "curly": true,
+    "eofline": true,
+    "forin": true,
+    "import-blacklist": [true, "rxjs"],
+    "import-spacing": true,
+    "indent": [
+>>>>>>> b72a69f (Update dependencies (#20))
       true,
       "rxjs/Rx"
     ],
+<<<<<<< HEAD
     "interface-name": false,
     "max-classes-per-file": false,
+=======
+    "interface-over-type-literal": true,
+    "label-position": true,
+>>>>>>> b72a69f (Update dependencies (#20))
     "max-line-length": [
       true,
       140
@@ -52,6 +72,7 @@
       "timeEnd",
       "trace"
     ],
+<<<<<<< HEAD
     "no-empty": false,
     "no-inferrable-types": [
       true,
@@ -62,24 +83,86 @@
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
+=======
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-eval": true,
+    "no-inferrable-types": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-unused-expression": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "one-line": [
+>>>>>>> b72a69f (Update dependencies (#20))
       true,
       "as-needed"
     ],
+<<<<<<< HEAD
     "object-literal-sort-keys": false,
     "ordered-imports": false,
+=======
+    "prefer-const": true,
+>>>>>>> b72a69f (Update dependencies (#20))
     "quotemark": [
       true,
       "single"
     ],
+<<<<<<< HEAD
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
     "no-empty-interface": false,
     "no-host-metadata-property": true,
+=======
+    "radix": true,
+    "semicolon": [
+      "always"
+    ],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "typeof-compare": true,
+    "unified-signatures": true,
+    "variable-name": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "component-selector": [true, "element", "app", "kebab-case"],
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+>>>>>>> b72a69f (Update dependencies (#20))
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
     "no-output-native": true,
     "no-output-on-prefix": true,
     "no-output-rename": true,
+<<<<<<< HEAD
     "no-outputs-metadata-property": true,
     "template-banana-in-box": true,
     "template-no-negated-async": true,
@@ -89,4 +172,14 @@
   "rulesDirectory": [
     "codelyzer"
   ]
+=======
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "no-access-missing-member": true,
+    "templates-use-public": true,
+    "invoke-injectable": true
+  }
+>>>>>>> b72a69f (Update dependencies (#20))
 }

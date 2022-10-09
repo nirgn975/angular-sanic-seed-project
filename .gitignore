@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> b72a69f (Update dependencies (#20))
 # Created by https://www.gitignore.io/api/python,django,node,sass,virtualenv,jetbrains
 
 ### Python ###
@@ -221,6 +225,7 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
+<<<<<<< HEAD
 
 ### OSX ###
 *.DS_Store
@@ -246,4 +251,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+=======
+>>>>>>> b72a69f (Update dependencies (#20))
 # End of https://www.gitignore.io/api/python,django,node,sass,virtualenv,jetbrains
